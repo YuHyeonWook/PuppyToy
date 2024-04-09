@@ -1,8 +1,8 @@
 * {
-  $font-color: #0a0a0a;
-  $background-color: #fbefef;
-  $hover-color: #e9deff;
-  $border-color: #ded4f1;
+  --font-color: #0a0a0a;
+  --background-color: #fbefef;
+  --hover-color: #e9deff;
+  --border-color: #ded4f1;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
@@ -11,5 +11,5 @@
 }
 
 body {
-  background-color: var($background-color);
+  background-color: var(--background-color);
 }
