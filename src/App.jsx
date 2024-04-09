@@ -6,7 +6,7 @@ import UserAdd from './pages/UserAdd';
 import UserProfile from './pages/UserProfile';
 import WorkspaceApplication from './pages/WorkspaceApplication';
 import Gallery from './pages/Gallery';
-import './App.css';
+import './App.scss';
 
 const App = () => {
   return (
