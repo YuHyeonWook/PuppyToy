@@ -1,0 +1,38 @@
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  border-bottom: 1px solid var(--border-color);
+
+  .logo {
+    font-size: 1.5rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: bold;
+    text-decoration: none;
+    color: var(--font-color);
+    &:hover {
+      background-color: var(--hover-color);
+      border-radius: 5px;
+    }
+  }
+
+  ul {
+    display: flex;
+    li {
+      list-style: none;
+      .link-style {
+        text-decoration: none;
+        display: block;
+        color: var(--font-color);
+        padding: 0.9rem;
+        font-size: 1.1rem;
+        &:hover {
+          background-color: var(--hover-color);
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
