@@ -1,0 +1,38 @@
+.userForm {
+  width: 100%;
+  max-width: 600px;
+  margin: 100px auto;
+  background-color: #fefefe;
+  border-radius: 6px;
+  .user__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .gender-select {
+    border-radius: 6px;
+    width: 100%;
+    padding: 5px;
+  }
+}
+
+.btn__container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
