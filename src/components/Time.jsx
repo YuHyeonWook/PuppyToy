@@ -1,8 +1,13 @@
 import '../styles/Time.scss';
 import React, { useEffect, useState } from 'react';
 
+const WorkButton = React.memo(({ inWork }) => {
+  return <button type="button">{inWork ? '퇴근 하기' : '출근 하기'}</button>;
+});
+
 const Time = () => {
   const [currentTime, setCurrentTime] = useState('00:00:00');
+  const [inWork, setInWork] = useState(false);
 
   useEffect(() => {
     const calculateCurrentTime = () => {
@@ -28,6 +33,7 @@ const Time = () => {
     <section className="time">
       <h3>현재 시각</h3>
       <div className="current-time">{currentTime}</div>
+      <WorkButton inWork={inWork} />
     </section>
   );
 };

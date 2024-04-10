@@ -1,7 +1,7 @@
 .time {
   width: 250px;
   height: 200px;
-  border-radius: 15px;
+  border-radius: 16px;
   background-color: #fff;
   margin: 0 auto;
   display: flex;
@@ -18,5 +18,21 @@
   .current-time {
     font-size: 20px;
     font-weight: 700;
+  }
+
+  button {
+    font-size: 16px;
+    font-weight: 700;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 16px;
+    margin-top: 5px;
+    background-color: #8ac0ff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #6998ce;
+    }
   }
 }
