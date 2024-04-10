@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../components/UserContext';
 import '../styles/HeaderStyle.scss';

@@ -123,7 +123,7 @@
 
 // ----  2번쨰 시도 코드 contextapi 사용---
 
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addDoc, collection } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';

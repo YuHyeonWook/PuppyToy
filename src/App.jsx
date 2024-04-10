@@ -11,7 +11,7 @@ import { useState } from 'react';
 import './App.scss';
 
 const App = () => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
 
   return (
     <>
