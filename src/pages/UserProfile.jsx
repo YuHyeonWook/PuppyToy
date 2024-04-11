@@ -1,14 +1,22 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/userProfile.scss';
 import React from 'react';
 import Header from '../components/Header';
-import { UserContext } from '../components/UserContext';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const UserProfile = () => {
-  const { user } = useContext(UserContext);
   const [userData, setUserData] = useState(null);
+
+  // 한국 기준 Date 객체 반환
+  const getTimeInKorea = () => {
+    const date = new Date();
+    const timeInUtc = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
+    const timeInKorea = new Date(timeInUtc + 9 * 60 * 60 * 1000);
+
+    return timeInKorea;
+  };
 
   useEffect(() => {
     const auth = getAuth();
@@ -49,31 +57,32 @@ const UserProfile = () => {
             <div className="user-profile__image">
               <img src={userData.imageUrl} alt="User Profile Image" />
             </div>
+            <div className="user-profile__name">{userData.name}</div>
           </header>
           <main>
             <div className="user-profile__type">
               <p className="key">{'품종'}</p>
-              <p className="value">{user.breed}</p>
+              <p className="value">{userData.breed}</p>
+            </div>
+            <div className="user-profile__gender">
+              <p className="key">{'성별'}</p>
+              <p className="value">{userData.gender}</p>
             </div>
             <div className="user-profile__age">
               <p className="key">{'나이'}</p>
-              <p className="value">{user.age}</p>
-            </div>
-            <div className="user-profile__name">
-              <p className="key">{'이름'}</p>
-              <p className="value">{user.name}</p>
+              <p className="value">{userData.age}</p>
             </div>
             <div className="user-profile__position">
               <p className="key">{'직책'}</p>
-              <p className="value">{user.position}</p>
+              <p className="value">{userData.position}</p>
             </div>
             <div className="user-profile__time-in-work">
               <p className="key">{'출근 시간'}</p>
-              <p className="value">{user.inWork}</p>
+              <p className="value">{userData.inWork}</p>
             </div>
             <div className="user-profile__time-out-work">
               <p className="key">{'퇴근 시간'}</p>
-              <p className="value">{user.outWork}</p>
+              <p className="value">{userData.outWork}</p>
             </div>
           </main>
         </div>
