@@ -132,6 +132,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FiUser } from 'react-icons/fi';
 import { UserContext } from '../components/UserContext';
+import '../styles/UserAddStyle.scss';
 
 const UserAdd = () => {
   const [newUser, setNewUser] = useState({
@@ -234,11 +235,11 @@ const UserAdd = () => {
       <ToastContainer />
       <form className="userForm" onSubmit={handleSubmit}>
         <div className="user__container">
-          <label htmlFor="file-upload" className="custom-file-upload">
+          <label htmlFor="file-upload" className="customFile--upload">
             {newUser.imageUrl ? (
-              <img src={newUser.imageUrl} alt="newUser" width={50} height={50} />
+              <img src={newUser.imageUrl} alt="newUser" width={100} height={100} />
             ) : (
-              <FiUser size={50} />
+              <FiUser size={60} />
             )}
           </label>
           <input
@@ -277,15 +278,19 @@ const UserAdd = () => {
             value={newUser.breed}
             onChange={handleChange}
           />
-          <select name="position" value={newUser.position} onChange={handleChange}>
+          <select
+            className="position-select"
+            name="position"
+            value={newUser.position}
+            onChange={handleChange}>
             <option value="">직책</option>
             <option value="leader">리더</option>
             <option value="sub-leader">부반장</option>
             <option value="member">유치원생</option>
           </select>
-        </div>
-        <div className="btn__container" type="submit" disabled={progress !== 100}>
-          <button>추가</button>
+          <div className="btn__container" type="submit" disabled={progress !== 100}>
+            <button>추가</button>
+          </div>
         </div>
       </form>
     </>

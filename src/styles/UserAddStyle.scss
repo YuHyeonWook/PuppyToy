@@ -1,38 +1,76 @@
+* {
+  --input-color: #eee;
+  --useradd-btn-color: #e91e63;
+  --useradd-btn-hover: #b61a4e;
+}
 .userForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 600px;
-  margin: 100px auto;
-  background-color: #fefefe;
-  border-radius: 6px;
+  height: 100vh;
+
   .user__container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  .gender-select {
-    border-radius: 6px;
-    width: 100%;
-    padding: 5px;
+    align-items: center;
+    background-color: #fefefe;
+    gap: 20px;
+    width: 40%;
+    height: 65%;
+    border-radius: 20px 20px 0 0;
+
+    .customFile--upload {
+      margin-top: 30px;
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    input {
+      width: 60%;
+      height: 45px;
+      font-size: 15px;
+      background-color: var(--input-color);
+      border: none;
+      border-radius: 15px;
+      outline: none;
+      padding: 20px;
+      margin: 2vh;
+    }
+
+    .gender-select {
+      border-radius: 6px;
+      width: 60%;
+      height: 40px;
+      padding: 5px;
+    }
+
+    .position-select {
+      border-radius: 6px;
+      height: 40px;
+      width: 60%;
+      padding: 5px;
+    }
   }
 }
 
 .btn__container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: var(--useradd-btn-color);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: var(--useradd-btn-hover);
   }
 }

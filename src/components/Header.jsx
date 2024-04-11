@@ -33,7 +33,7 @@ const Header = () => {
             {user && (
               <div className="user--info" onClick={() => navigate('/userprofile')}>
                 <img src={user.imageUrl} />
-                <span>{user.name}</span>
+                <span>{user.name}님</span>
               </div>
             )}
           </li>
