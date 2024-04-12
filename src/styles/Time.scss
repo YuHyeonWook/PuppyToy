@@ -34,5 +34,11 @@
     &:hover {
       background-color: #6998ce;
     }
+
+    &:disabled {
+      color: #fff;
+      background-color: #a7b2be;
+      cursor: default;
+    }
   }
 }
