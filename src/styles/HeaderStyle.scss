@@ -13,6 +13,11 @@
     font-size: bold;
     text-decoration: none;
     color: var(--font-color);
+    img {
+      width: 50px;
+      height: auto;
+      border-radius: 5px;
+    }
     &:hover {
       background-color: var(--hover-color);
       border-radius: 5px;

@@ -1,6 +1,7 @@
-import { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from '../components/UserContext';
+import logo from '../assets/logo/HeaderLogo.jpg';
 import '../styles/HeaderStyle.scss';
 
 const Header = () => {
@@ -11,7 +12,7 @@ const Header = () => {
     <>
       <nav className="navbar__container">
         <Link className="logo" to="/home">
-          logo
+          <img src={logo} alt="logo" />
         </Link>
         <ul>
           <li>

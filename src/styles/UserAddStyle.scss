@@ -1,8 +1,11 @@
+$input-color: #eee;
+$useradd-btn-color: #e91e63;
+$useradd-btn-hover: #b61a4e;
+
 * {
-  --input-color: #eee;
-  --useradd-btn-color: #e91e63;
-  --useradd-btn-hover: #b61a4e;
+  box-sizing: border-box;
 }
+
 .userForm {
   display: flex;
   flex-direction: column;
@@ -18,8 +21,12 @@
     background-color: #fefefe;
     gap: 20px;
     width: 40%;
-    height: 65%;
+    // height: 65%;
     border-radius: 20px 20px 0 0;
+
+    #file-upload {
+      display: none;
+    }
 
     .customFile--upload {
       margin-top: 30px;
@@ -28,13 +35,13 @@
       }
     }
 
-    input {
+    .userAdd__input {
       width: 60%;
       height: 45px;
       font-size: 15px;
-      background-color: var(--input-color);
+      background-color: $input-color;
       border: none;
-      border-radius: 15px;
+      border-radius: 0.5rem;
       outline: none;
       padding: 20px;
       margin: 2vh;
@@ -62,15 +69,15 @@
   margin-top: 10px;
 }
 
-button {
+.userAdd--btn {
   padding: 10px 20px;
-  background-color: var(--useradd-btn-color);
+  background-color: $useradd-btn-color;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-
+  margin-bottom: 20px;
   &:hover {
-    background-color: var(--useradd-btn-hover);
+    background-color: $useradd-btn-hover;
   }
 }

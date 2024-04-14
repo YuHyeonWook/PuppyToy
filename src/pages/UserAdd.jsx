@@ -1,128 +1,3 @@
-// import React, { useEffect, useState } from 'react';
-// import { addDoc, collection } from 'firebase/firestore';
-// import { db, storage } from '../firebase';
-// import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-// import { toast } from 'react-toastify';
-// import '../styles/UserAddStyle.scss';
-
-// const UserAdd = () => {
-//   const [newUser, setNewUser] = useState({
-//     name: '',
-//     gender: '',
-//     age: '',
-//     breed: '',
-//     position: '',
-//   });
-//   const [file, setFile] = useState('');
-
-//   const handleFileUpload = (e) => {
-//     const file = e.target.files[0];
-//     const storageRef = ref(storage, file.name);
-//     const uploadTask = uploadBytesResumable(storageRef, file);
-
-//     uploadTask.on(
-//       'state_changed',
-//       (snapshot) => {
-//         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-//         console.log('Upload is ' + progress + '% done');
-//       },
-//       (error) => {
-//         console.error(error);
-//       },
-//       () => {
-//         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-//           console.log('File available at', downloadURL);
-//           setImage(downloadURL); // 이미지 URL을 상태에 저장합니다.
-//         });
-//       },
-//     );
-//   };
-
-//   const handleChange = (e) => {
-//     setNewUser({
-//       ...newUser,
-//       [e.target.name]: e.target.value,
-//     });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     // 모든 필드가 채워져 있는지 확인합니다.
-//     if (Object.values(newUser).every((item) => item !== '')) {
-//       try {
-//         // 모든 필드가 채워져 있으면 Firebase에 문서를 추가합니다.
-//         await addDoc(collection(db, 'newUsers'), newUser);
-//         setNewUser({
-//           name: '',
-//           gender: '',
-//           age: '',
-//           breed: '',
-//           position: '',
-//         });
-//       } catch (error) {
-//         // 문서 추가 중 에러가 발생하면 에러를 출력.
-//         console.error('Error adding document: ', error);
-//       }
-//     } else {
-//       // 하나 이상의 필드가 빈 문자열인 경우 에러 메시지를 출력.
-//       console.error('빈칸을 모두 채워주세요.');
-//     }
-//   };
-
-//   return (
-//     <>
-//       <form className="userForm" onSubmit={handleSubmit}>
-//         <input type="file" onChange={handleImageUpload} />
-//         <div className="user__container">
-//           <input
-//             type="text"
-//             name="name"
-//             placeholder="이름"
-//             value={setNewUser.name}
-//             onChange={handleChange}
-//           />
-//           <select
-//             className="gender-select"
-//             name="gender"
-//             value={setNewUser.gender}
-//             onChange={handleChange}>
-//             <option value="">Select gender...</option>
-//             <option value="male">Male</option>
-//             <option value="female">Female</option>
-//           </select>
-//           <input
-//             type="number"
-//             name="age"
-//             placeholder="나이"
-//             value={setNewUser.age}
-//             onChange={handleChange}
-//           />
-//           <input
-//             type="text"
-//             name="breed"
-//             placeholder="품종"
-//             value={setNewUser.breed}
-//             onChange={handleChange}
-//           />
-//           <select name="position" value={setNewUser.position} onChange={handleChange}>
-//             <option value="">직책</option>
-//             <option value="leader">리더</option>
-//             <option value="sub-leader">부반장</option>
-//             <option value="member">유치원생</option>
-//           </select>
-//         </div>
-//         <div className="btn__container">
-//           <button>추가</button>
-//         </div>
-//       </form>
-//     </>
-//   );
-// };
-
-// export default UserAdd;
-
-// ----  2번쨰 시도 코드 contextapi 사용---
-
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addDoc, collection } from 'firebase/firestore';
@@ -130,9 +5,11 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebase';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { FiUser } from 'react-icons/fi';
+import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/UserContext';
+import ComonDropdown from '../components/CommonDropdown';
 import '../styles/UserAddStyle.scss';
+import '../styles/LoadingStyle.scss';
 
 const UserAdd = () => {
   const [newUser, setNewUser] = useState({
@@ -145,6 +22,7 @@ const UserAdd = () => {
   });
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -174,7 +52,7 @@ const UserAdd = () => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-            toast.info('Image upload to firebase successfully', {
+            toast.info('이미지 업로드 성공!!', {
               autoClose: 2000,
             });
             setNewUser((prev) => ({ ...prev, imageUrl: downloadUrl }));
@@ -194,7 +72,7 @@ const UserAdd = () => {
   };
 
   const handleChange = (e) => {
-    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+    setNewUser((prevUser) => ({ ...prevUser, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -202,6 +80,7 @@ const UserAdd = () => {
     if (Object.values(newUser).some((item) => item === '')) {
       alert('모든 필드를 채워주세요.');
     } else {
+      setIsLoading(true);
       try {
         // Firebase에 유저 데이터 저장
         const docRef = await addDoc(collection(db, 'newUsers'), newUser);
@@ -215,19 +94,22 @@ const UserAdd = () => {
           position: '',
           imageUrl: '',
         });
-        toast.success('newUser created successfully', {
-          autoClose: 1000,
-        });
         setTimeout(() => {
           navigate('/home');
+          setIsLoading(false);
         }, 2000);
       } catch (error) {
         console.error('Error adding document: ', error);
+        setIsLoading(false);
         toast.error('Error creating newUser', {
           autoClose: 2000,
         });
       }
     }
+  };
+
+  const handleDropdownValueUpdate = (name) => (value) => {
+    setNewUser((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -239,32 +121,25 @@ const UserAdd = () => {
             {newUser.imageUrl ? (
               <img src={newUser.imageUrl} alt="newUser" width={100} height={100} />
             ) : (
-              <FiUser size={60} />
+              <LuDog size={60} />
             )}
           </label>
+          <input id="file-upload" type="file" onChange={handleFileUpload} />
           <input
-            id="file-upload"
-            type="file"
-            onChange={handleFileUpload}
-            style={{ display: 'none' }}
-          />
-          <input
+            className="userAdd__input"
             type="text"
             name="name"
             placeholder="이름"
             value={newUser.name}
             onChange={handleChange}
           />
-          <select
-            className="gender-select"
-            name="gender"
-            value={newUser.gender}
-            onChange={handleChange}>
-            <option value="">Select gender...</option>
-            <option value="male">수컷</option>
-            <option value="female">암컷</option>
-          </select>
+          <ComonDropdown
+            list={['male', 'female']}
+            onValueChange={handleDropdownValueUpdate('gender')}
+            placeholder={'성별'}
+          />
           <input
+            className="userAdd__input"
             type="number"
             name="age"
             placeholder="나이"
@@ -272,26 +147,29 @@ const UserAdd = () => {
             onChange={handleChange}
           />
           <input
+            className="userAdd__input"
             type="text"
             name="breed"
             placeholder="품종"
             value={newUser.breed}
             onChange={handleChange}
           />
-          <select
-            className="position-select"
-            name="position"
-            value={newUser.position}
-            onChange={handleChange}>
-            <option value="">직책</option>
-            <option value="leader">리더</option>
-            <option value="sub-leader">부반장</option>
-            <option value="member">유치원생</option>
-          </select>
+          <ComonDropdown
+            list={['leader', 'sub-leader', 'member']}
+            onValueChange={handleDropdownValueUpdate('position')}
+            placeholder={'직책'}
+          />
           <div className="btn__container" type="submit" disabled={progress !== 100}>
-            <button>추가</button>
+            <button className="userAdd--btn">추가</button>
           </div>
         </div>
+        {isLoading && (
+          <div className="spinner">
+            <span className="spinner-inner-1"></span>
+            <span className="spinner-inner-2"></span>
+            <span className="spinner-inner-3"></span>
+          </div>
+        )}
       </form>
     </>
   );
