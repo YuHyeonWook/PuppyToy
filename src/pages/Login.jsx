@@ -10,12 +10,14 @@ const Login = () => {
   const navigate = useNavigate();
   const auth = getAuth();
 
+  console.log(auth.currentUser.uid);
+
   const register = async (e) => {
     try {
       if (email !== '' && password !== '') {
         await signInWithEmailAndPassword(auth, email, password);
         alert('로그인 되었습니다.');
-        navigate('/home');
+        navigate('/useradd');
       } else {
       }
     } catch (error) {
