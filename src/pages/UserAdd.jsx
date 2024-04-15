@@ -28,39 +28,55 @@ const UserAdd = () => {
 
   const uploadFile = useCallback(() => {
     if (file) {
-      const storageRef = ref(storage, file.name);
-      const uploadTask = uploadBytesResumable(storageRef, file);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log('Upload is ' + progress + '% done');
-          setProgress(progress);
-          switch (snapshot.state) {
-            case 'paused':
-              console.log('Upload is paused');
-              break;
-            case 'running':
-              console.log('Upload is running');
-              break;
-            default:
-              break;
-          }
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
-            toast.info('이미지 업로드 성공!!', {
-              autoClose: 2000,
-            });
-            setNewUser((prev) => ({ ...prev, imageUrl: downloadUrl }));
-          });
-        },
-      );
+      uploadFileToStorage();
     }
   }, [file]);
+
+  const uploadFileToStorage = () => {
+    const storageRef = ref(storage, file.name);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        updateUploadProgress(snapshot);
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+          onUploadSuccess(downloadUrl);
+        });
+      },
+    );
+  };
+
+  const updateUploadProgress = (snapshot) => {
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+    setProgress(progress);
+    updateUploadStatus(snapshot.state);
+  };
+
+  const updateUploadStatus = (state) => {
+    switch (state) {
+      case 'paused':
+        console.log('Upload is paused');
+        break;
+      case 'running':
+        console.log('Upload is running');
+        break;
+      default:
+        break;
+    }
+  };
+
+  const onUploadSuccess = (downloadUrl) => {
+    toast.info('이미지 업로드 성공!!', {
+      autoClose: 2000,
+    });
+    setNewUser((prev) => ({ ...prev, imageUrl: downloadUrl }));
+  };
 
   useEffect(() => {
     uploadFile();
