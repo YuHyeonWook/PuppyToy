@@ -24,11 +24,9 @@ const SignUp = () => {
       ) {
         await createUserWithEmailAndPassword(auth, email, password);
         alert('회원가입이 완료되었습니다.');
-        navigate('/home');
+        navigate('/useradd');
       }
     } catch (error) {
-      console.log(error.code);
-      console.log(error.message);
       if (error.code === 'auth/invalid-email') {
         alert('이메일 형식이 틀립니다.');
       }

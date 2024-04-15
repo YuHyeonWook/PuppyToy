@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebase';
+import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LuDog } from 'react-icons/lu';
@@ -98,10 +99,14 @@ const UserAdd = () => {
     } else {
       setIsLoading(true);
       try {
+        const auth = getAuth();
+        const uid = auth.currentUser.uid;
+
         // Firebase에 유저 데이터 저장
-        const docRef = await addDoc(collection(db, 'newUsers'), newUser);
+        await setDoc(doc(db, 'newUsers', uid), newUser);
+
         // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
-        setUser({ id: docRef.id, ...newUser });
+        setUser({ id: uid, ...newUser });
         setNewUser({
           name: '',
           gender: '',

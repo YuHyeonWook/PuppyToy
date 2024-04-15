@@ -10,8 +10,6 @@ const Login = () => {
   const navigate = useNavigate();
   const auth = getAuth();
 
-  console.log(auth.currentUser.uid);
-
   const register = async (e) => {
     try {
       if (email !== '' && password !== '') {
@@ -21,8 +19,6 @@ const Login = () => {
       } else {
       }
     } catch (error) {
-      console.log(error.code);
-      console.log(error.message);
       if (error.code === 'auth/invalid-email') {
         alert('이메일 형식이 틀립니다.');
       }
