@@ -6,7 +6,7 @@ const WorkspaceApplication = () => {
   return (
     <>
       <Header />
-      <div>Workspace Application</div>
+      <div>모달창</div>
     </>
   );
 };
