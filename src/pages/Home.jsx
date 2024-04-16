@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div>home</div>
       <Time />
     </>
   );

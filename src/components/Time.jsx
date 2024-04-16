@@ -2,6 +2,7 @@ import '../styles/Time.scss';
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const Time = () => {
   const [currentTime, setCurrentTime] = useState('-- : -- : --'); // 현재 시간
@@ -46,17 +47,19 @@ const Time = () => {
   // workDate가 이전 날짜인 경우 workTime 초기화
   // inWork, outWork 초기화
   useEffect(() => {
-    const checkWorkDate = async () => {
-      const docRef = doc(db, 'workTime', 'wdPm9QLOre0i3GGpS5LC');
-      const docSnap = await getDoc(docRef);
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      const userId = user.uid;
+      const userRef = doc(db, 'newUsers', userId);
+      const userSnap = await getDoc(userRef);
 
-      if (docSnap.exists()) {
-        const workTime = docSnap.data();
+      if (userSnap.exists()) {
+        const userData = userSnap.data();
         const timeInKorea = getTimeInKorea();
         const currentDate = timeInKorea.toISOString().split('T')[0];
 
-        if (new Date(workTime.workDate) < new Date(currentDate)) {
-          await updateDoc(docRef, {
+        if (new Date(userData.workDate) < new Date(currentDate)) {
+          await updateDoc(userRef, {
             inWork: '-- : -- : --',
             outWork: '-- : -- : --',
             workDate: currentDate,
@@ -64,35 +67,39 @@ const Time = () => {
           setInWork(false);
           setOutWork(false);
         } else {
-          if (workTime.inWork !== '-- : -- : --') setInWork(true);
-          if (workTime.outWork !== '-- : -- : --') setOutWork(true);
+          if (userData.inWork !== '-- : -- : --') setInWork(true);
+          if (userData.outWork !== '-- : -- : --') setOutWork(true);
         }
+      } else {
+        console.log('No such user!');
       }
-    };
-
-    checkWorkDate();
+    });
   }, []);
 
   // 출퇴근 버튼 클릭 시 workTime 수정 및 inWork, outWork 변경
-  const handleClick = async () => {
-    const docRef = doc(db, 'workTime', 'wdPm9QLOre0i3GGpS5LC');
-    const docSnap = await getDoc(docRef);
+  const handleClick = () => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      const userId = user.uid;
+      const userRef = doc(db, 'newUsers', userId);
+      const userSnap = await getDoc(userRef);
 
-    if (docSnap.exists()) {
-      if (!inWork) {
-        await updateDoc(docRef, {
-          inWork: currentTime,
-        });
-        setInWork(true);
-      }
+      if (userSnap.exists()) {
+        if (!inWork) {
+          await updateDoc(userRef, {
+            inWork: currentTime,
+          });
+          setInWork(true);
+        }
 
-      if (inWork && !outWork) {
-        await updateDoc(docRef, {
-          outWork: currentTime,
-        });
-        setOutWork(true);
+        if (inWork && !outWork) {
+          await updateDoc(userRef, {
+            outWork: currentTime,
+          });
+          setOutWork(true);
+        }
       }
-    }
+    });
   };
 
   return (
