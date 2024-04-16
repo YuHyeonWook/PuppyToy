@@ -3,9 +3,10 @@ $background: white;
 $size: 50px;
 
 .spinner {
-  position: absolute;
-  top: calc(50% - #{50px / 2});
-  left: calc(50% - #{50px / 2});
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: $size;
   height: $size;
   animation: spinner 0.75s linear infinite;
