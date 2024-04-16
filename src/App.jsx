@@ -10,6 +10,7 @@ import { UserContext } from './components/UserContext';
 import { useEffect, useState } from 'react';
 import { auth } from './firebase';
 import './App.scss';
+import { auth } from './firebase';
 
 const App = () => {
   const [user, setUser] = useState({});

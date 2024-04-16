@@ -24,16 +24,28 @@ const SignUp = () => {
       ) {
         await createUserWithEmailAndPassword(auth, email, password);
         alert('회원가입이 완료되었습니다.');
+<<<<<<< HEAD
         navigate('/');
       }
     } catch (error) {
+=======
+        navigate('/home');
+      }
+    } catch (error) {
+      console.log(error.code);
+      console.log(error.message);
+>>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
       if (error.code === 'auth/invalid-email') {
         alert('이메일 형식이 틀립니다.');
       }
       if (error.code === 'auth/email-already-exists') {
         alert('해당 이메일은 사용중입니다.');
       }
+<<<<<<< HEAD
       if (error.code === 'auth/weak-password') {
+=======
+      if (error.code === 'auth/invalid-password') {
+>>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
         alert('6자 이상의 비밀번호를 입력해주세요.');
       }
     }
@@ -54,7 +66,11 @@ const SignUp = () => {
           <input
             className="inputbox__pw"
             type="password"
+<<<<<<< HEAD
             placeholder="Password: 6자 이상 입력해주세요"
+=======
+            placeholder="Password"
+>>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
