@@ -3,25 +3,18 @@ import { Link } from 'react-router-dom';
 import '../styles/Login.scss';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-<<<<<<< HEAD
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
-=======
->>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const auth = getAuth();
-<<<<<<< HEAD
   const db = getFirestore();
-=======
->>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
 
   const register = async (e) => {
     try {
       if (email !== '' && password !== '') {
-<<<<<<< HEAD
         const user = await signInWithEmailAndPassword(auth, email, password);
         const userUid = user.user.uid;
 
@@ -38,23 +31,12 @@ const Login = () => {
         alert('이메일과 비밀번호를 입력해주세요.');
       }
     } catch (error) {
-=======
-        await signInWithEmailAndPassword(auth, email, password);
-        alert('로그인 되었습니다.');
-        navigate('/home');
-      } else {
-      }
-    } catch (error) {
-      console.log(error.code);
-      console.log(error.message);
->>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
       if (error.code === 'auth/invalid-email') {
         alert('이메일 형식이 틀립니다.');
       }
       if (error.code === 'auth/user-not-found') {
         alert('아이디가 존재하지 않습니다.');
       }
-<<<<<<< HEAD
       if (error.code === 'auth/invalid-password') {
         alert('비밀번호를 6자 이상 입력해주세요.');
       }
@@ -64,11 +46,6 @@ const Login = () => {
       if (error.code === 'auth/invalid-credential') {
         alert('이메일 또는 비밀번호가 잘못되었습니다.');
       }
-=======
-      if (error.code === 'auth/wrong-password') {
-        alert('비밀번호를 다시 확인해주세요.');
-      }
->>>>>>> 93c87da3617342600ebc20b0e8dee1367e53e674
     }
   };
 

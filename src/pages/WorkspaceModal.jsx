@@ -80,7 +80,6 @@ const WorkspaceModal = ({ setModalOpen }) => {
             selected={schedule}
             onChange={(date) => setSchedule(date)}
           />
-          <p></p>
           <textarea
             name="reason"
             id="modal__reason"
