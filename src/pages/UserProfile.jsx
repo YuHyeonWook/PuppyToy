@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import '../styles/userProfile.scss';
+import '../styles/UserProfile.scss';
 import React from 'react';
 import Header from '../components/Header';
 import { doc, getDoc } from 'firebase/firestore';
