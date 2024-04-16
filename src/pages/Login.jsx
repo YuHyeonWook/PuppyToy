@@ -3,22 +3,29 @@ import { Link } from 'react-router-dom';
 import '../styles/Login.scss';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const auth = getAuth();
+  const db = getFirestore();
 
   const register = async (e) => {
     try {
       if (email !== '' && password !== '') {
-        await signInWithEmailAndPassword(auth, email, password);
-        const user = firebase.auth().currentUser.uid;
-        console.log('유저 uid: ', user);
+        const user = await signInWithEmailAndPassword(auth, email, password);
+        const userUid = user.user.uid;
 
+        const docRef = doc(db, 'newUsers', userUid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          navigate('/home');
+        } else {
+          navigate('/useradd');
+        }
         alert('로그인 되었습니다.');
-        navigate('/home');
       } else {
       }
     } catch (error) {

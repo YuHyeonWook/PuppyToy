@@ -18,7 +18,11 @@ const SingOut = () => {
     }
   };
 
-  return <button onClick={logOutClick}>Log Out</button>;
+  return (
+    <button className="logoutbtn" onClick={logOutClick}>
+      Log Out
+    </button>
+  );
 };
 
 export default SingOut;
