@@ -44,6 +44,7 @@ const Time = () => {
   }, []);
 
   // workDate가 이전 날짜인 경우 workTime 초기화
+  // inWork, outWork 초기화
   useEffect(() => {
     const checkWorkDate = async () => {
       const docRef = doc(db, 'workTime', 'wdPm9QLOre0i3GGpS5LC');
@@ -62,6 +63,9 @@ const Time = () => {
           });
           setInWork(false);
           setOutWork(false);
+        } else {
+          if (workTime.inWork !== '-- : -- : --') setInWork(true);
+          if (workTime.outWork !== '-- : -- : --') setOutWork(true);
         }
       }
     };
