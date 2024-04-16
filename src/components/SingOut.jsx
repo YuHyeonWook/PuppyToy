@@ -9,6 +9,7 @@ const SingOut = () => {
   const logOutClick = async () => {
     try {
       await signOut(auth);
+      localStorage.removeItem('user');
       alert('로그아웃 되었습니다.');
       navigate('/');
     } catch (error) {

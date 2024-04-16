@@ -21,12 +21,12 @@ const Login = () => {
         const docRef = doc(db, 'newUsers', userUid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
+          localStorage.setItem('user', JSON.stringify({ id: userUid, ...docSnap.data() }));
           navigate('/home');
         } else {
           navigate('/useradd');
         }
         alert('로그인 되었습니다.');
-      } else {
       }
     } catch (error) {
       if (error.code === 'auth/invalid-email') {

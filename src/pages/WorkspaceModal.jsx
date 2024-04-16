@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/WorkspaceModal.scss';
 import DatePicker from 'react-datepicker';
+import { ko } from 'date-fns/esm/locale';
 import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -11,20 +12,36 @@ const WorkspaceModal = ({ setModalOpen }) => {
     { value: '조퇴', label: '조퇴' },
     { value: '결석', label: '결석' },
   ];
+  const storageItem = localStorage.getItem('user');
+  const userItem = JSON.parse(storageItem);
 
   return (
-    <div>
-      <div>
+    <div className="modal-background">
+      <div className="modal">
         <h1>신청서</h1>
-        <span onClick={() => setModalOpen(false)}>X</span>
-        {/* 유저 이름 가져오기 */}
-        <span>이름</span>
-        <input className="name" type="text" />
-        <Select className="selectItem" options={options} placeholder="결석형태" />
-        <span>날짜</span>
-        <DatePicker className="date" selected={startDate} onChange={(date) => setStartDate(date)} />
-        <span>사유</span>
-        <textarea name="reason" id="reason" cols="60" rows="10"></textarea>
+        <span className="modal-close" onClick={() => setModalOpen(false)}>
+          X
+        </span>
+        <div className="modal__conent">
+          <input className="modal__name" type="text" value={userItem.name} readOnly />
+          <Select
+            className="modal__select"
+            options={options}
+            placeholder="결석형태"
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 10,
+              colors: { ...theme.colors, primary25: '#e9deff', primary: '#c3a3ff' },
+            })}
+          />
+          <DatePicker
+            locale={ko}
+            className="modal__date"
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
+          <textarea name="modal__reason" id="reason" cols="60" rows="10"></textarea>
+        </div>
       </div>
     </div>
   );

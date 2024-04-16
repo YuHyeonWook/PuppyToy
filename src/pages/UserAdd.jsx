@@ -13,6 +13,16 @@ import '../styles/UserAddStyle.scss';
 import '../styles/LoadingStyle.scss';
 
 const UserAdd = () => {
+  // 한국 기준 CurrentDate 문자열 반환
+  const getCurrentDate = () => {
+    const date = new Date();
+    const timeInUtc = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
+    const timeInKorea = new Date(timeInUtc + 9 * 60 * 60 * 1000);
+    const currentDate = timeInKorea.toISOString().split('T')[0];
+
+    return currentDate;
+  };
+
   const [newUser, setNewUser] = useState({
     name: '',
     gender: '',
@@ -20,6 +30,9 @@ const UserAdd = () => {
     breed: '',
     position: '',
     imageUrl: '',
+    inWork: '-- : -- : --',
+    outWork: '-- : -- : --',
+    workDate: getCurrentDate(),
   });
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(0);
@@ -104,7 +117,8 @@ const UserAdd = () => {
 
         // Firebase에 유저 데이터 저장
         await setDoc(doc(db, 'newUsers', uid), newUser);
-
+        // localStorage에 유저 데이터 저장
+        localStorage.setItem('user', JSON.stringify({ id: uid, ...newUser }));
         // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
         setUser({ id: uid, ...newUser });
         setNewUser({
@@ -114,6 +128,9 @@ const UserAdd = () => {
           breed: '',
           position: '',
           imageUrl: '',
+          inWork: '-- : -- : --',
+          outWork: '-- : -- : --',
+          workDate: getCurrentDate(),
         });
         setTimeout(() => {
           navigate('/home');
