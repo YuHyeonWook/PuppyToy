@@ -71,12 +71,17 @@
     border-radius: 0 0 10px 10px;
     padding: 100px 50px 50px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 
     > div {
       font-size: 20px;
-      width: calc(100% / 3);
+      width: calc((1320px - 40px * 3) / 3);
+      border: 10px solid var(--border-color);
+      border-radius: 10px;
+      margin: 20px;
       padding: 10px;
+      background-color: #f1ebff;
 
       .key {
         font-weight: 900;
