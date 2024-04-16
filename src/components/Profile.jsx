@@ -61,7 +61,7 @@ const Profile = ({ userData }) => {
           </p>
           <p className="value">{userData.position}</p>
         </div>
-        <div className="user-profile__time-in-work">
+        <div className="user-profile__in-work">
           <p className="key">
             <FaRegClock
               style={{
@@ -72,7 +72,7 @@ const Profile = ({ userData }) => {
           </p>
           <p className="value">{userData.inWork}</p>
         </div>
-        <div className="user-profile__time-out-work">
+        <div className="user-profile__out-work">
           <p className="key">
             <FaClock
               style={{
