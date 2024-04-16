@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import '../styles/WorkspaceModal.scss';
 import DatePicker from 'react-datepicker';
-import { ko } from 'date-fns/esm/locale';
+import ko from 'date-fns/locale/ko';
 import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 
 const WorkspaceModal = ({ setModalOpen }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [schedule, setSchedule] = useState(new Date());
+  const [reason, setReason] = useState('');
+  const [attendance, setAttendance] = useState('');
+  const [selectOption, setSelectOption] = useState('');
+
+  const db = getFirestore();
   const options = [
     { value: '외출', label: '외출' },
     { value: '조퇴', label: '조퇴' },
@@ -15,9 +21,35 @@ const WorkspaceModal = ({ setModalOpen }) => {
   const storageItem = localStorage.getItem('user');
   const userItem = JSON.parse(storageItem);
 
+  const handleSubmit = async () => {
+    try {
+      if (schedule !== '' && reason !== '' && attendance !== '') {
+        const docRef = doc(db, 'absent', userItem.id);
+        const data = {
+          name: userItem.name,
+          date: schedule,
+          reason: reason,
+          attendance: attendance,
+        };
+        await setDoc(docRef, data);
+        alert('등록되었습니다.');
+        setModalOpen(false);
+      } else {
+        alert('모두 입력해주세요.');
+      }
+    } catch (error) {
+      console.log(error.code);
+      console.log(error.message);
+    }
+  };
+
   return (
-    <div className="modal-background">
-      <div className="modal">
+    <div className="modal-background" onClick={() => setModalOpen(false)}>
+      <div
+        className="modal"
+        onClick={(e) => {
+          e.stopPropagation();
+        }}>
         <h1>신청서</h1>
         <span className="modal-close" onClick={() => setModalOpen(false)}>
           X
@@ -28,6 +60,11 @@ const WorkspaceModal = ({ setModalOpen }) => {
             className="modal__select"
             options={options}
             placeholder="결석형태"
+            onChange={(e) => {
+              setAttendance(e.value);
+              setSelectOption(e);
+            }}
+            value={selectOption}
             theme={(theme) => ({
               ...theme,
               borderRadius: 10,
@@ -35,12 +72,27 @@ const WorkspaceModal = ({ setModalOpen }) => {
             })}
           />
           <DatePicker
+            showIcon
             locale={ko}
+            dateFormat="yyyy년 MM월 dd일"
+            minDate={new Date()}
             className="modal__date"
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={schedule}
+            onChange={(date) => setSchedule(date)}
           />
-          <textarea name="modal__reason" id="reason" cols="60" rows="10"></textarea>
+          <p></p>
+          <textarea
+            name="reason"
+            id="modal__reason"
+            cols="60"
+            rows="10"
+            placeholder="사유"
+            value={reason}
+            onChange={(e) => setReason(e.target.value)}
+          />
+          <button className="modal__btn" onClick={handleSubmit}>
+            등록
+          </button>
         </div>
       </div>
     </div>

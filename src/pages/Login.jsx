@@ -27,6 +27,8 @@ const Login = () => {
           navigate('/useradd');
         }
         alert('로그인 되었습니다.');
+      } else {
+        alert('이메일과 비밀번호를 입력해주세요.');
       }
     } catch (error) {
       if (error.code === 'auth/invalid-email') {
