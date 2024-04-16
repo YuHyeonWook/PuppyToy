@@ -1,0 +1,83 @@
+$input-color: #eee;
+$useradd-btn-color: #e91e63;
+$useradd-btn-hover: #b61a4e;
+
+* {
+  box-sizing: border-box;
+}
+
+.userForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  .user__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    gap: 20px;
+    width: 40%;
+    // height: 65%;
+    border-radius: 20px 20px 0 0;
+
+    #file-upload {
+      display: none;
+    }
+
+    .customFile--upload {
+      margin-top: 30px;
+      img {
+        border-radius: 50%;
+      }
+    }
+
+    .userAdd__input {
+      width: 60%;
+      height: 45px;
+      font-size: 15px;
+      background-color: $input-color;
+      border: none;
+      border-radius: 0.5rem;
+      outline: none;
+      padding: 20px;
+      margin: 2vh;
+    }
+
+    .gender-select {
+      border-radius: 6px;
+      width: 60%;
+      height: 40px;
+      padding: 5px;
+    }
+
+    .position-select {
+      border-radius: 6px;
+      height: 40px;
+      width: 60%;
+      padding: 5px;
+    }
+  }
+}
+
+.btn__container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.userAdd--btn {
+  padding: 10px 20px;
+  background-color: $useradd-btn-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  &:hover {
+    background-color: $useradd-btn-hover;
+  }
+}

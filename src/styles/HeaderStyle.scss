@@ -1,9 +1,10 @@
-.navbar-container {
+.navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
   border-bottom: 1px solid var(--border-color);
+  padding-right: 2rem;
 
   .logo {
     font-size: 1.5rem;
@@ -12,6 +13,11 @@
     font-size: bold;
     text-decoration: none;
     color: var(--font-color);
+    img {
+      width: 50px;
+      height: auto;
+      border-radius: 5px;
+    }
     &:hover {
       background-color: var(--hover-color);
       border-radius: 5px;
@@ -22,7 +28,7 @@
     display: flex;
     li {
       list-style: none;
-      .link-style {
+      .link--style {
         text-decoration: none;
         display: block;
         color: var(--font-color);
@@ -31,6 +37,24 @@
         &:hover {
           background-color: var(--hover-color);
           border-radius: 5px;
+        }
+      }
+      .user--info {
+        color: var(--font-color);
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: block;
+          &:hover {
+            cursor: pointer;
+            background-color: var(--hover-color);
+            border-radius: 5px;
+          }
         }
       }
     }

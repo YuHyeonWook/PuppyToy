@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Login.scss';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword, setPersistence } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -14,6 +14,9 @@ const Login = () => {
     try {
       if (email !== '' && password !== '') {
         await signInWithEmailAndPassword(auth, email, password);
+        const user = firebase.auth().currentUser.uid;
+        console.log('유저 uid: ', user);
+
         alert('로그인 되었습니다.');
         navigate('/home');
       } else {
