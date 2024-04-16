@@ -104,7 +104,8 @@ const UserAdd = () => {
 
         // Firebase에 유저 데이터 저장
         await setDoc(doc(db, 'newUsers', uid), newUser);
-
+        // localStorage에 유저 데이터 저장
+        localStorage.setItem('user', JSON.stringify({ id: uid, ...newUser }));
         // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
         setUser({ id: uid, ...newUser });
         setNewUser({
