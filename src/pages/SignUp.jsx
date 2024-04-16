@@ -27,8 +27,6 @@ const SignUp = () => {
         navigate('/');
       }
     } catch (error) {
-      console.log(error.code);
-      console.log(error.message);
       if (error.code === 'auth/invalid-email') {
         alert('이메일 형식이 틀립니다.');
       }
