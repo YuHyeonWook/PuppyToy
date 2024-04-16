@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 .gallery__container {
+  h1 {
+    margin: 40px;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px 0;
+    border-radius: 30px;
+  }
   .dog__gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -12,6 +19,10 @@
     align-items: center;
 
     .dog__card {
+      display: grid;
+      place-items: center;
+      margin-top: 50px;
+
       img {
         width: 400px;
         height: 400px;
@@ -22,10 +33,12 @@
 
       .dog--info {
         margin-top: 10px;
+    text-align: center; /* 텍스트 가운데 정렬 */
 
         h3 {
           font-size: 1.2rem;
           margin: 5px 0;
+          color: #ff70a0;
         }
         p {
           margin: 5px 0;
