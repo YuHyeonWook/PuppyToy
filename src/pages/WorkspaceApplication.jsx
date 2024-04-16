@@ -11,8 +11,8 @@ const WorkspaceApplication = () => {
   return (
     <>
       <Header />
-      <button onClick={() => btnClick}>신청</button>
-      {modalOpen && <WorkspaceModal setModalOpen={modalOpen} />}
+      <button onClick={() => btnClick()}>신청</button>
+      {modalOpen && <WorkspaceModal setModalOpen={setModalOpen} />}
     </>
   );
 };
