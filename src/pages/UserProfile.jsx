@@ -60,7 +60,7 @@ const UserProfile = () => {
             <div className="user-profile__name">{userData.name}</div>
           </header>
           <main>
-            <div className="user-profile__type">
+            <div className="user-profile__breed">
               <p className="key">{'품종'}</p>
               <p className="value">{userData.breed}</p>
             </div>
