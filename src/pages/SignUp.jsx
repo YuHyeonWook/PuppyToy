@@ -35,7 +35,7 @@ const SignUp = () => {
       if (error.code === 'auth/email-already-exists') {
         alert('해당 이메일은 사용중입니다.');
       }
-      if (error.code === 'auth/invalid-password') {
+      if (error.code === 'auth/weak-password') {
         alert('6자 이상의 비밀번호를 입력해주세요.');
       }
     }
@@ -56,7 +56,7 @@ const SignUp = () => {
           <input
             className="inputbox__pw"
             type="password"
-            placeholder="Password"
+            placeholder="Password: 6자 이상 입력해주세요"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

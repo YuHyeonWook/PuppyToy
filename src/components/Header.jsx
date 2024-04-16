@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import '../styles/Header.scss';
+import SingOut from './SingOut';
 
 const Header = () => {
   return (
@@ -26,6 +27,7 @@ const Header = () => {
             </NavLink>
           </li>
         </ul>
+        <SingOut />
       </nav>
     </>
   );

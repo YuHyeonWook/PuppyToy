@@ -53,6 +53,12 @@ section {
         padding: 20px;
         margin: 2vh;
       }
+      .letter {
+        display: none;
+      }
+      .letter.on {
+        display: block;
+      }
     }
     .btn {
       display: flex;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Login.scss';
 import { useNavigate } from 'react-router-dom';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, setPersistence } from 'firebase/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -27,8 +27,14 @@ const Login = () => {
       if (error.code === 'auth/user-not-found') {
         alert('아이디가 존재하지 않습니다.');
       }
+      if (error.code === 'auth/invalid-password') {
+        alert('비밀번호를 6자 이상 입력해주세요.');
+      }
       if (error.code === 'auth/wrong-password') {
         alert('비밀번호를 다시 확인해주세요.');
+      }
+      if (error.code === 'auth/invalid-credential') {
+        alert('이메일 또는 비밀번호가 잘못되었습니다.');
       }
     }
   };

@@ -1,5 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../styles/SingOut.scss';
 
 const SingOut = () => {
   const navigate = useNavigate();
@@ -8,7 +10,7 @@ const SingOut = () => {
     try {
       await signOut(auth);
       alert('로그아웃 되었습니다.');
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.log(error.code);
       console.log(error.message);

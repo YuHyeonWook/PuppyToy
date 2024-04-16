@@ -1,0 +1,20 @@
+* {
+  --singout-btn-color: #fc5555;
+  --hover-btn-color: #c44242;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  background-color: var(--singout-btn-color);
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
+  border: none;
+  transition: 0.3s;
+  margin: 5px;
+
+  &:hover {
+    background-color: var(--hover-btn-color);
+  }
+}
