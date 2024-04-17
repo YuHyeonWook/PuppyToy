@@ -9,7 +9,7 @@ const List = ({ attendance }) => {
 
   useEffect(() => {
     let unsub;
-    console.log(attendance);
+
     if (attendance) {
       const q = query(collection(db, 'absent'), where('attendance', '==', attendance));
       unsub = onSnapshot(q, (doc) => {

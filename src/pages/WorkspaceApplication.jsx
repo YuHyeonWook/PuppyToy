@@ -14,6 +14,7 @@ const WorkspaceApplication = () => {
     { value: '조퇴', label: '조퇴' },
     { value: '결석', label: '결석' },
   ];
+
   const btnClick = () => {
     setModalOpen(true);
   };
