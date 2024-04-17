@@ -1,9 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-.gallery__container {
+.gallery {
   h1 {
     margin: 40px;
     text-align: center;
@@ -11,39 +6,12 @@
     padding: 20px 0;
     border-radius: 30px;
   }
-  .dog__gallery {
+
+  .dogs {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     justify-content: center;
     align-items: center;
-
-    .dog__card {
-      display: grid;
-      place-items: center;
-      margin-top: 50px;
-
-      img {
-        width: 400px;
-        height: 400px;
-        object-fit: cover;
-        border-radius: 10px;
-        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.6);
-      }
-
-      .dog--info {
-        margin-top: 10px;
-    text-align: center; /* 텍스트 가운데 정렬 */
-
-        h3 {
-          font-size: 1.2rem;
-          margin: 5px 0;
-          color: #ff70a0;
-        }
-        p {
-          margin: 5px 0;
-        }
-      }
-    }
   }
 }

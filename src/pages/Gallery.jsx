@@ -3,6 +3,7 @@ import axios from 'axios';
 import Header from '../components/Header';
 import '../styles/Gallery.scss';
 import '../styles/LoadingStyle.scss';
+import Dog from '../components/Dog';
 
 const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
@@ -31,37 +32,16 @@ const Gallery = () => {
       }
     };
     fetchDogs();
-  }, [apiKey]);
-
-  // ?. 옵셔널 체이닝은 dog.breeds[0]이 undefined 또는 null일 경우를 방지하기 위해 사용.
+  }, []);
 
   return (
     <>
       <Header />
-      <div className="gallery__container">
+      <div className="gallery">
         <h1>강아지 갤러리</h1>
-        <div className="dog__gallery">
+        <div className="dogs">
           {dogsData.map((dog) => (
-            <div key={dog.id} className="dog__card">
-              <img src={dog.url} alt={dog.breeds[0]?.name} />
-              <div className="dog--info">
-                <h3>품종: {dog.breeds[0]?.name || '알 수 없음'}</h3>
-                <p>성격: {dog.breeds[0]?.temperament || '알 수 없음'}</p>
-                <p>평균 수명: {dog.breeds[0]?.life_span || '알 수 없음'}</p>
-                <p>
-                  무게:{' '}
-                  {dog.breeds[0]?.weight.imperial
-                    ? `${dog.breeds[0]?.weight.imperial} kg`
-                    : '알 수 없음'}{' '}
-                </p>
-                <p>
-                  키:{' '}
-                  {dog.breeds[0]?.height.imperial
-                    ? `${dog.breeds[0]?.height.imperial} 인치`
-                    : '알 수 없음'}
-                </p>
-              </div>
-            </div>
+            <Dog key={dog.id} dog={dog} />
           ))}
         </div>
         {isLoading && (
