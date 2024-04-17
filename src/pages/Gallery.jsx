@@ -8,7 +8,6 @@ import Dog from '../components/Dog';
 const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const apiKey = 'live_3qoCzy9xbdRPc32Nij1GI4AdVa4jUW6cJvlZ9gAz84kxNbWOlxC8994mgKDMupyf';
 
   useEffect(() => {
     const fetchDogs = async () => {
@@ -18,9 +17,10 @@ const Gallery = () => {
           params: {
             limit: 16,
             size: 'small',
+            has_breeds: true,
           },
           headers: {
-            'x-api-key': apiKey,
+            'x-api-key': import.meta.env.VITE_THEDOG_API_KEY,
           },
         });
         setDogsData(response.data);
