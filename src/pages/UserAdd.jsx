@@ -172,7 +172,7 @@ const UserAdd = () => {
             onChange={handleChange}
           />
           <ComonDropdown
-            list={['male', 'female']}
+            list={['수컷', '암컷']}
             onValueChange={handleDropdownValueUpdate('gender')}
             placeholder={'성별'}
           />
@@ -193,7 +193,7 @@ const UserAdd = () => {
             onChange={handleChange}
           />
           <ComonDropdown
-            list={['leader', 'sub-leader', 'member']}
+            list={['반장', '부반장', '유치원생']}
             onValueChange={handleDropdownValueUpdate('position')}
             placeholder={'직책'}
           />
