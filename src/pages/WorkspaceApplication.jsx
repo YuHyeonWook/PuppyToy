@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import '../styles/WorkspaceApplication.scss';
 import WorkspaceModal from './WorkspaceModal';
 
-const WorkspaceApplication = () => {
+export const WorkspaceApplication = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const btnClick = () => {
     setModalOpen(true);
@@ -16,5 +16,3 @@ const WorkspaceApplication = () => {
     </>
   );
 };
-
-export default WorkspaceApplication;

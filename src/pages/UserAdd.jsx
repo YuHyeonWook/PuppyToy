@@ -9,10 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/UserContext';
 import ComonDropdown from '../components/CommonDropdown';
-import '../styles/UserAddStyle.scss';
+import '../styles/UserAdd.scss';
 import '../styles/LoadingStyle.scss';
 
-const UserAdd = () => {
+export const UserAdd = () => {
   // 한국 기준 CurrentDate 문자열 반환
   const getCurrentDate = () => {
     const date = new Date();
@@ -212,5 +212,3 @@ const UserAdd = () => {
     </>
   );
 };
-
-export default UserAdd;

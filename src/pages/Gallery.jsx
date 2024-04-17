@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import '../styles/Gallery.scss';
 import '../styles/LoadingStyle.scss';
 
-const Gallery = () => {
+export const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const apiKey = 'live_3qoCzy9xbdRPc32Nij1GI4AdVa4jUW6cJvlZ9gAz84kxNbWOlxC8994mgKDMupyf';
@@ -75,5 +75,3 @@ const Gallery = () => {
     </>
   );
 };
-
-export default Gallery;
