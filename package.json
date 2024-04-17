@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "date-fns": "^3.6.0",
+=======
+    "axios": "^1.6.8",
+>>>>>>> feature/gallery
     "firebase": "^10.10.0",
     "react": "^18.2.0",
     "react-datepicker": "^6.8.0",
