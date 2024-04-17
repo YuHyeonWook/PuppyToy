@@ -1,0 +1,43 @@
+.outside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
+
+  .time-modal {
+    width: 300px;
+    height: 230px;
+    border-radius: 16px;
+    background-color: #fff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    top: 185px;
+    left: 0;
+    right: 0;
+    animation: modal-open 0.4s;
+
+    .btns {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
+@keyframes modal-open {
+  0% {
+    width: 250px;
+    height: 200px;
+  }
+  100% {
+    width: 300px;
+    height: 230px;
+  }
+}
