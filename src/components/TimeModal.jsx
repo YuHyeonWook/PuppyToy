@@ -1,5 +1,6 @@
 import '../styles/TimeModal.scss';
 import React from 'react';
+import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
