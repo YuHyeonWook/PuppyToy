@@ -4,7 +4,7 @@ import DatePicker from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
 const WorkspaceModal = ({ setModalOpen }) => {
   const [schedule, setSchedule] = useState(new Date());
@@ -24,14 +24,14 @@ const WorkspaceModal = ({ setModalOpen }) => {
   const handleSubmit = async () => {
     try {
       if (schedule !== '' && reason !== '' && attendance !== '') {
-        const docRef = doc(db, 'absent', userItem.id);
         const data = {
+          id: userItem.id,
           name: userItem.name,
           date: schedule,
           reason: reason,
           attendance: attendance,
         };
-        await setDoc(docRef, data);
+        await addDoc(collection(db, 'absent'), data);
         alert('등록되었습니다.');
         setModalOpen(false);
       } else {
