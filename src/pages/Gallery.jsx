@@ -24,9 +24,7 @@ const Gallery = () => {
           },
         });
         setDogsData(response.data);
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error API dogs:', error);
       }
