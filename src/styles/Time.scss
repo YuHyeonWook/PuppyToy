@@ -43,6 +43,10 @@
 
     &--exit {
       background-color: #ff5454;
+
+      &:hover {
+        background-color: #be4242;
+      }
     }
   }
 }
