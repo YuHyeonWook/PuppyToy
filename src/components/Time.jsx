@@ -3,11 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import TimeModal from './TimeModal';
 
 const Time = () => {
   const [currentTime, setCurrentTime] = useState('-- : -- : --'); // 현재 시간
   const [inWork, setInWork] = useState(false); // 출근 여부
   const [outWork, setOutWork] = useState(false); // 퇴근 여부
+  const [modalOpen, setModalOpen] = useState(false);
 
   // 한국 기준 Date 객체 반환
   const getTimeInKorea = () => {
@@ -76,39 +78,23 @@ const Time = () => {
     });
   }, []);
 
-  // 출퇴근 버튼 클릭 시 workTime 수정 및 inWork, outWork 변경
-  const handleClick = () => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, async (user) => {
-      const userId = user.uid;
-      const userRef = doc(db, 'newUsers', userId);
-      const userSnap = await getDoc(userRef);
-
-      if (userSnap.exists()) {
-        if (!inWork) {
-          await updateDoc(userRef, {
-            inWork: currentTime,
-          });
-          setInWork(true);
-        }
-
-        if (inWork && !outWork) {
-          await updateDoc(userRef, {
-            outWork: currentTime,
-          });
-          setOutWork(true);
-        }
-      }
-    });
-  };
-
   return (
     <section className="time">
       <h3>현재 시각</h3>
       <div className="current-time">{currentTime}</div>
-      <button type="button" onClick={handleClick} disabled={inWork && outWork}>
-        {inWork ? (outWork ? '퇴근 완료' : '퇴근 하기') : '출근하기'}
+      <button type="button" onClick={() => setModalOpen(true)} disabled={inWork && outWork}>
+        {inWork ? (outWork ? '퇴근 완료' : '퇴근 하기') : '출근 하기'}
       </button>
+      {modalOpen && (
+        <TimeModal
+          currentTime={currentTime}
+          inWork={inWork}
+          setInWork={setInWork}
+          outWork={outWork}
+          setOutWork={setOutWork}
+          setModalOpen={setModalOpen}
+        />
+      )}
     </section>
   );
 };
