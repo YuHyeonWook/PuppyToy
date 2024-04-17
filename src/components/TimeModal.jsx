@@ -40,10 +40,14 @@ const TimeModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setMod
           {inWork ? (outWork ? '이미 퇴근하셨습니다.' : '퇴근하시겠습니까?') : '출근하시겠습니까?'}
         </p>
         <div className="btns">
-          <button type="button" onClick={() => handleWorkTime()} disabled={inWork && outWork}>
+          <button
+            className="btn"
+            type="button"
+            onClick={() => handleWorkTime()}
+            disabled={inWork && outWork}>
             {inWork ? (outWork ? '퇴근 완료' : '퇴근 하기') : '출근 하기'}
           </button>
-          <button type="button" onClick={() => setModalOpen(false)}>
+          <button className="btn btn--exit" type="button" onClick={() => setModalOpen(false)}>
             취소 하기
           </button>
         </div>

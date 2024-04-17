@@ -82,7 +82,11 @@ const Time = () => {
     <section className="time">
       <h3>현재 시각</h3>
       <div className="current-time">{currentTime}</div>
-      <button type="button" onClick={() => setModalOpen(true)} disabled={inWork && outWork}>
+      <button
+        className="btn"
+        type="button"
+        onClick={() => setModalOpen(true)}
+        disabled={inWork && outWork}>
         {inWork ? (outWork ? '퇴근 완료' : '퇴근 하기') : '출근 하기'}
       </button>
       {modalOpen && (

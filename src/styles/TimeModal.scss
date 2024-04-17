@@ -1,11 +1,14 @@
 .outside {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.7);
 
   .time-modal {
-    width: 250px;
+    width: 300px;
     height: 200px;
     border-radius: 16px;
     background-color: #fff;
@@ -15,5 +18,14 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;
+
+    .btns {
+      display: flex;
+      gap: 10px;
+    }
   }
 }
