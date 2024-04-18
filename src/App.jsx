@@ -6,10 +6,12 @@
 // import UserProfile from './pages/UserProfile';
 // import WorkspaceApplication from './pages/WorkspaceApplication';
 // import Gallery from './pages/Gallery';
+import './App.scss';
 import { UserContext } from './components/UserContext';
 import { useEffect, useState } from 'react';
 import { Router } from './router/Router';
-import './App.scss';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const App = () => {
   const [user, setUser] = useState({});
@@ -26,6 +28,17 @@ const App = () => {
     setUser({});
     localStorage.removeItem('user');
   };
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.pathname === '/') return;
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) navigate('/');
+    });
+  }, [location.pathname]);
 
   return (
     <>
