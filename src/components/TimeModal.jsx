@@ -33,8 +33,8 @@ const TimeModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setMod
   };
 
   return (
-    <div className="outside">
-      <div className="time-modal">
+    <div className="outside" onClick={() => setModalOpen(false)}>
+      <div className="time-modal" onClick={(event) => event.stopPropagation()}>
         <h3>현재 시각</h3>
         <div className="current-time">{currentTime}</div>
         <p className="description">
