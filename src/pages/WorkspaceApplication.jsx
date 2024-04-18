@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import List from '../components/List';
-import WorkspaceModal from './WorkspaceModal';
+import WorkspaceList from '../components/WorkspaceList';
+import WorkspaceModal from '../components/WorkspaceModal';
 import Select from 'react-select';
 import '../styles/WorkspaceApplication.scss';
 
@@ -41,7 +41,7 @@ export const WorkspaceApplication = () => {
           신청
         </button>
       </div>
-      <List attendance={attendance} />
+      <WorkspaceList attendance={attendance} />
       {modalOpen && <WorkspaceModal setModalOpen={setModalOpen} />}
     </>
   );
