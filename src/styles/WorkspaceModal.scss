@@ -12,7 +12,7 @@
   position: fixed;
   display: flex;
   inset: 0px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   .modal {
@@ -21,7 +21,7 @@
     min-width: 600px;
     min-height: 500px;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 15px;
     z-index: 1000;
     h1 {
       font-family: 'TTTogether';
@@ -44,12 +44,17 @@
       width: 100%;
       height: 100%;
       font-size: 15px;
+      .modal__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
       .modal__name {
         background-color: var(--input-color);
       }
       input {
         width: 60%;
-        height: 30px;
+        height: 40px;
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 15px;
         outline: none;
@@ -57,15 +62,13 @@
         margin: 2vh 0;
         text-align: center;
       }
-      > input {
-        height: 40px;
-      }
       .modal__select {
         width: 60%;
-        height: 40px;
+        height: auto;
         text-align: center;
         .css-reqq1a-control .css-art2ul-ValueContainer2 {
-          height: 40px;
+          cursor: pointer;
+          max-height: 50px;
         }
       }
       .react-datepicker-wrapper {
@@ -85,6 +88,7 @@
         width: 100%;
         padding: 5px 35px;
         height: 40px;
+        cursor: pointer;
       }
       #modal__reason {
         padding: 20px;

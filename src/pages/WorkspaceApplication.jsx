@@ -15,10 +15,20 @@ export const WorkspaceApplication = () => {
     { value: '조퇴', label: '조퇴' },
     { value: '결석', label: '결석' },
   ];
+  const [selectedItem, setSelectedItem] = useState('');
+  const [readonly, setReadonly] = useState(false);
 
   const btnClick = () => {
     setModalOpen(true);
+    setReadonly(false);
   };
+
+  const handleItemClick = (itemData) => {
+    setSelectedItem(itemData);
+    setModalOpen(true);
+    setReadonly(true);
+  };
+
   return (
     <>
       <Header />
@@ -42,9 +52,15 @@ export const WorkspaceApplication = () => {
           신청
         </button>
       </div>
-      <WorkspaceList attendance={attendance} />
-      {modalOpen && <WorkspaceModal setModalOpen={setModalOpen} />}
-      <Footer />
+      <WorkspaceList attendance={attendance} onItemClick={handleItemClick} />
+      {modalOpen && (
+        <WorkspaceModal
+          setModalOpen={setModalOpen}
+          selectedItem={selectedItem}
+          setSelectedItem={setSelectedItem}
+          readonly={readonly}
+        />
+      )}
     </>
   );
 };
