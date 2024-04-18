@@ -1,4 +1,13 @@
-import { Login, SignUp, Home, UserAdd, UserProfile, WorkspaceApplication, Gallery } from '../pages';
+import {
+  Login,
+  SignUp,
+  Home,
+  UserAdd,
+  UserProfile,
+  WorkspaceApplication,
+  Gallery,
+  NotFound,
+} from '../pages';
 
 export const PagesData = [
   {
@@ -35,5 +44,10 @@ export const PagesData = [
     path: 'gallery',
     element: <Gallery />,
     title: 'gallery',
+  },
+  {
+    path: '*',
+    element: <NotFound />,
+    title: 'notfound',
   },
 ];
