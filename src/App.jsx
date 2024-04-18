@@ -32,7 +32,7 @@ const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    if (location.pathname === '/') return;
+    if (location.pathname === '/' || location.pathname === '/signup') return;
 
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
