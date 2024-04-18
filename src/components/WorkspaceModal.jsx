@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/WorkspaceModal.scss';
 import DatePicker from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
@@ -6,11 +6,27 @@ import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
-const WorkspaceModal = ({ setModalOpen }) => {
+const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
   const [schedule, setSchedule] = useState(new Date());
   const [reason, setReason] = useState('');
   const [attendance, setAttendance] = useState('');
   const [selectOption, setSelectOption] = useState('');
+
+  // list 누르면 선택된 모달창에 데이터가  schedule, reason, attendance에 들어가짐
+  useEffect(() => {
+    if (selectedItem) {
+      setSchedule(selectedItem.date.toDate());
+      setReason(selectedItem.reason);
+      setAttendance(selectedItem.attendance);
+      setSelectOption({ value: selectedItem.attendance, label: selectedItem.attendance });
+    } else {
+      // selectedItem이 null인 경우 상태 값 초기화
+      setSchedule(new Date());
+      setReason('');
+      setAttendance('');
+      setSelectOption('');
+    }
+  }, [selectedItem]);
 
   const db = getFirestore();
   const options = [
