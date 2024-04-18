@@ -36,7 +36,6 @@ const Gallery = () => {
     <>
       <Header />
       <div className="gallery">
-        <h1>강아지 갤러리</h1>
         <div className="dogs">
           {dogsData.map((dog) => (
             <Dog key={dog.id} dog={dog} />
