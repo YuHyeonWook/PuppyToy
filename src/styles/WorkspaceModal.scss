@@ -21,7 +21,7 @@
     min-width: 600px;
     min-height: 500px;
     padding: 30px;
-    border-radius: 20px;
+    border-radius: 15px;
     z-index: 1000;
     h1 {
       font-family: 'TTTogether';
@@ -54,7 +54,7 @@
       }
       input {
         width: 60%;
-        height: 30px;
+        height: 40px;
         border: 1px solid rgba(0, 0, 0, 0.2);
         border-radius: 15px;
         outline: none;
@@ -62,15 +62,13 @@
         margin: 2vh 0;
         text-align: center;
       }
-      > input {
-        height: 40px;
-      }
       .modal__select {
         width: 60%;
-        height: 40px;
+        height: auto;
         text-align: center;
         .css-reqq1a-control .css-art2ul-ValueContainer2 {
-          height: 40px;
+          cursor: pointer;
+          max-height: 50px;
         }
       }
       .react-datepicker-wrapper {
@@ -90,6 +88,7 @@
         width: 100%;
         padding: 5px 35px;
         height: 40px;
+        cursor: pointer;
       }
       #modal__reason {
         padding: 20px;
