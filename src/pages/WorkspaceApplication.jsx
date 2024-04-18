@@ -4,6 +4,7 @@ import WorkspaceList from '../components/WorkspaceList';
 import WorkspaceModal from '../components/WorkspaceModal';
 import Select from 'react-select';
 import '../styles/WorkspaceApplication.scss';
+import Footer from '../components/Footer';
 
 export const WorkspaceApplication = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -43,6 +44,7 @@ export const WorkspaceApplication = () => {
       </div>
       <WorkspaceList attendance={attendance} />
       {modalOpen && <WorkspaceModal setModalOpen={setModalOpen} />}
+      <Footer />
     </>
   );
 };
