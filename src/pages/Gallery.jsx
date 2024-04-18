@@ -36,17 +36,18 @@ export const Gallery = () => {
   return (
     <>
       <Header />
-      <div className="gallery">
-        <div className="dogs">
-          {dogsData.map((dog) => (
-            <Dog key={dog.id} dog={dog} />
-          ))}
-        </div>
-        {isLoading && (
+      <div className="gallery" style={{ height: `${isLoading ? '80vh' : 'auto'}` }}>
+        {isLoading ? (
           <div className="spinner">
             <span className="spinner-inner-1"></span>
             <span className="spinner-inner-2"></span>
             <span className="spinner-inner-3"></span>
+          </div>
+        ) : (
+          <div className="dogs">
+            {dogsData.map((dog) => (
+              <Dog key={dog.id} dog={dog} />
+            ))}
           </div>
         )}
       </div>
