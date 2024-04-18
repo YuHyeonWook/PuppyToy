@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'TTTogether';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .recommend {
   max-width: 1320px;
   margin: 50px auto;
@@ -6,8 +14,9 @@
   padding: 1.5rem;
 
   h2 {
+    font-family: 'TTTogether';
     font-size: 3rem;
-    font-weight: 900;
+    font-weight: 400;
     text-align: center;
     width: fit-content;
     margin: 0 auto;
