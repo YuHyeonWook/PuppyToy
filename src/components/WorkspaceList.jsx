@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
-import { getFirestore, collection, query, where, onSnapshot } from 'firebase/firestore';
+import { getFirestore, collection, query, where, onSnapshot, Timestamp } from 'firebase/firestore';
 import '../styles/WorkspaceApplication.scss';
 
 const WorkspaceList = ({ attendance }) => {
@@ -8,19 +8,27 @@ const WorkspaceList = ({ attendance }) => {
   const [listData, setListData] = useState([]);
 
   useEffect(() => {
-    let unsub;
+    let unsub, q;
+
+    //오늘 날짜 포함, new Date()를 하면 시간 때문에 오늘 날짜임에도 보이지 않음
+    const today = new Date();
+    const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
     if (attendance) {
-      const q = query(collection(db, 'absent'), where('attendance', '==', attendance));
+      q = query(
+        collection(db, 'absent'),
+        where('attendance', '==', attendance),
+        where('date', '>=', Timestamp.fromDate(todayDate)),
+      );
       unsub = onSnapshot(q, (doc) => {
         setListData(doc.docs);
       });
     } else {
-      unsub = onSnapshot(collection(db, 'absent'), (doc) => {
+      q = query(collection(db, 'absent'), where('date', '>=', Timestamp.fromDate(todayDate)));
+      unsub = onSnapshot(q, (doc) => {
         setListData(doc.docs);
       });
     }
-
     return () => unsub();
   }, [db, attendance]);
 
