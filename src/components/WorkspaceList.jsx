@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { getFirestore, collection, query, where, onSnapshot } from 'firebase/firestore';
 import '../styles/WorkspaceApplication.scss';
 
-const WorkspaceList = ({ attendance }) => {
+const WorkspaceList = ({ attendance, onItemClick }) => {
   const db = getFirestore();
   const [listData, setListData] = useState([]);
 
@@ -28,7 +28,7 @@ const WorkspaceList = ({ attendance }) => {
     <div className="inner">
       <div className="list">
         {listData.map((data) => (
-          <div className="list__container" key={data.id}>
+          <div className="list__container" key={data.id} onClick={() => onItemClick(data.data())}>
             <div className="list__name">{data.data().name}</div>
             <div className="list__attendance">{data.data().attendance}</div>
             <div className="list__date">
