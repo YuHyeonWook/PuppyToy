@@ -1,0 +1,36 @@
+.recommend {
+  max-width: 1320px;
+  margin: 50px auto;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 1.5rem;
+
+  h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    border-bottom: 5px solid #000;
+  }
+
+  .dogs {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .spinner {
+      position: static;
+      transform: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 50px 0;
+    }
+  }
+}
