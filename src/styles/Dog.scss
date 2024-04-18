@@ -1,0 +1,77 @@
+.dog {
+  width: 330px;
+  border: 10px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 12px 20px 0 rgba(0, 0, 0, 0.08);
+    transform: translateY(-8px);
+  }
+
+  &__image {
+    width: 270px;
+    height: 270px;
+    display: flex;
+    align-items: center;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+  }
+
+  &__info {
+    width: 270px;
+    margin-top: 10px;
+
+    > h3 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    > div {
+      margin: 5px 0;
+      display: flex;
+
+      .key {
+        font-weight: 700;
+        min-width: 100px;
+        text-align: center;
+        position: relative;
+        margin-right: 15px;
+
+        &::after {
+          content: '';
+          display: block;
+          width: 1px;
+          height: 50%;
+          background-color: #000;
+          position: absolute;
+          top: 25%;
+          right: 0;
+        }
+      }
+
+      .value {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+}

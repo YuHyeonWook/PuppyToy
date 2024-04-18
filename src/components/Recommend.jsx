@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import '../styles/Recommend.scss';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Header from '../components/Header';
-import '../styles/Gallery.scss';
-import '../styles/LoadingStyle.scss';
 import Dog from '../components/Dog';
 
-const Gallery = () => {
+const Recommend = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,7 +13,7 @@ const Gallery = () => {
         setIsLoading(true);
         const response = await axios.get('https://api.thedogapi.com/v1/images/search', {
           params: {
-            limit: 16,
+            limit: 3,
             size: 'small',
             has_breeds: true,
           },
@@ -33,24 +31,25 @@ const Gallery = () => {
   }, []);
 
   return (
-    <>
-      <Header />
-      <div className="gallery">
-        <div className="dogs">
-          {dogsData.map((dog) => (
-            <Dog key={dog.id} dog={dog} />
-          ))}
-        </div>
-        {isLoading && (
+    <div className="recommend">
+      <h2>오늘의 귀여운 강아지</h2>
+      <div className="dogs">
+        {isLoading ? (
           <div className="spinner">
             <span className="spinner-inner-1"></span>
             <span className="spinner-inner-2"></span>
             <span className="spinner-inner-3"></span>
           </div>
+        ) : (
+          <>
+            {dogsData.map((dog) => (
+              <Dog key={dog.id} dog={dog} />
+            ))}
+          </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
-export default Gallery;
+export default Recommend;
