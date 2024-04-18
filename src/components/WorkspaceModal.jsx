@@ -19,12 +19,6 @@ const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
       setReason(selectedItem.reason);
       setAttendance(selectedItem.attendance);
       setSelectOption({ value: selectedItem.attendance, label: selectedItem.attendance });
-    } else {
-      // selectedItem이 null인 경우 상태 값 초기화
-      setSchedule(new Date());
-      setReason('');
-      setAttendance('');
-      setSelectOption('');
     }
   }, [selectedItem]);
 
