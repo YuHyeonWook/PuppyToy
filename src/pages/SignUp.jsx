@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.scss';
 
-const SignUp = () => {
+export const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
@@ -79,5 +79,3 @@ const SignUp = () => {
     </section>
   );
 };
-
-export default SignUp;

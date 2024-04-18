@@ -5,7 +5,7 @@ import WorkspaceModal from './WorkspaceModal';
 import Select from 'react-select';
 import '../styles/WorkspaceApplication.scss';
 
-const WorkspaceApplication = () => {
+export const WorkspaceApplication = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [attendance, setAttendance] = useState('');
   const [selectOption, setSelectOption] = useState('');
@@ -46,5 +46,3 @@ const WorkspaceApplication = () => {
     </>
   );
 };
-
-export default WorkspaceApplication;

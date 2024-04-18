@@ -5,7 +5,7 @@ import '../styles/Gallery.scss';
 import '../styles/LoadingStyle.scss';
 import Dog from '../components/Dog';
 
-const Gallery = () => {
+export const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -52,5 +52,3 @@ const Gallery = () => {
     </>
   );
 };
-
-export default Gallery;

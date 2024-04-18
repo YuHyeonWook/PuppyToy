@@ -6,7 +6,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-const UserProfile = () => {
+export const UserProfile = () => {
   const [userData, setUserData] = useState(null);
 
   // 한국 기준 Date 객체 반환
@@ -52,5 +52,3 @@ const UserProfile = () => {
     </>
   );
 };
-
-export default UserProfile;
