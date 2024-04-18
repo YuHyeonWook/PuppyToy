@@ -6,7 +6,7 @@ import Select from 'react-select';
 import 'react-datepicker/dist/react-datepicker.css';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 
-const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
+const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly }) => {
   const [schedule, setSchedule] = useState(new Date());
   const [reason, setReason] = useState('');
   const [attendance, setAttendance] = useState('');
@@ -54,14 +54,24 @@ const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
   };
 
   return (
-    <div className="modal-background" onClick={() => setModalOpen(false)}>
+    <div
+      className="modal-background"
+      onClick={() => {
+        setSelectedItem('');
+        setModalOpen(false);
+      }}>
       <div
         className="modal"
         onClick={(e) => {
           e.stopPropagation();
         }}>
         <h1>신청서</h1>
-        <span className="modal-close" onClick={() => setModalOpen(false)}>
+        <span
+          className="modal-close"
+          onClick={() => {
+            setSelectedItem('');
+            setModalOpen(false);
+          }}>
           X
         </span>
         <div className="modal__conent">
@@ -74,12 +84,14 @@ const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
               setAttendance(e.value);
               setSelectOption(e);
             }}
+            readOnly={readonly}
             value={selectOption}
             theme={(theme) => ({
               ...theme,
               borderRadius: 10,
               colors: { ...theme.colors, primary25: '#e9deff', primary: '#c3a3ff' },
             })}
+            isDisabled={readonly}
           />
           <DatePicker
             showIcon
@@ -89,6 +101,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
             className="modal__date"
             selected={schedule}
             onChange={(date) => setSchedule(date)}
+            readOnly={readonly}
           />
           <textarea
             name="reason"
@@ -98,8 +111,9 @@ const WorkspaceModal = ({ setModalOpen, selectedItem }) => {
             placeholder="사유"
             value={reason}
             onChange={(e) => setReason(e.target.value)}
+            readOnly={readonly}
           />
-          <button className="modal__btn" onClick={handleSubmit}>
+          <button className="modal__btn" onClick={handleSubmit} disabled={readonly}>
             등록
           </button>
         </div>
