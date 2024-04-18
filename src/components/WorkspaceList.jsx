@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import { getFirestore, collection, query, where, onSnapshot } from 'firebase/firestore';
 import '../styles/WorkspaceApplication.scss';
 
-const List = ({ attendance }) => {
+const WorkspaceList = ({ attendance }) => {
   const db = getFirestore();
   const [listData, setListData] = useState([]);
 
@@ -43,4 +43,4 @@ const List = ({ attendance }) => {
   );
 };
 
-export default List;
+export default WorkspaceList;
