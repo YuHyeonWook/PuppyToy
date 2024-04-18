@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
 import '../styles/Gallery.scss';
-import '../styles/LoadingStyle.scss';
+import '../styles/Loading.scss';
 import Dog from '../components/Dog';
 
 export const Gallery = () => {
