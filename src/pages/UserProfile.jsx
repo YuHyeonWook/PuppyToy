@@ -5,6 +5,7 @@ import Profile from '../components/Profile';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Footer from '../components/Footer';
 
 export const UserProfile = () => {
   const [userData, setUserData] = useState(null);
@@ -49,6 +50,7 @@ export const UserProfile = () => {
     <>
       <Header />
       {userData ? <Profile userData={userData} /> : <div>Empty...</div>}
+      <Footer />
     </>
   );
 };

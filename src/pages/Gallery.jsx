@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import '../styles/Gallery.scss';
 import '../styles/Loading.scss';
 import Dog from '../components/Dog';
+import Footer from '../components/Footer';
 
 export const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
@@ -49,6 +50,7 @@ export const Gallery = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };
