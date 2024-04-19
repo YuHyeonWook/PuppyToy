@@ -49,7 +49,7 @@ export const UserProfile = () => {
   return (
     <>
       <Header />
-      {userData ? <Profile userData={userData} /> : <div>Empty...</div>}
+      {userData && <Profile userData={userData} />}
       <Footer />
     </>
   );
