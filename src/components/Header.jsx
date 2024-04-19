@@ -18,7 +18,7 @@ const Header = () => {
         <ul>
           <li>
             <NavLink className="link--style" to="/workspaceApplication">
-              근무형태 신청내역
+              결석 신청내역
               <span className="separator"></span>
             </NavLink>
           </li>
