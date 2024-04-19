@@ -8,7 +8,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import Footer from '../components/Footer';
 
 export const UserProfile = () => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState('');
 
   // 한국 기준 Date 객체 반환
   const getTimeInKorea = () => {

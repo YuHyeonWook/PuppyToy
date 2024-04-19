@@ -1,11 +1,3 @@
-// import { Routes, Route } from 'react-router-dom';
-// import Login from './pages/Login';
-// import SignUp from './pages/SignUp';
-// import Home from './pages/Home';
-// import UserAdd from './pages/UserAdd';
-// import UserProfile from './pages/UserProfile';
-// import WorkspaceApplication from './pages/WorkspaceApplication';
-// import Gallery from './pages/Gallery';
 import './App.scss';
 import { UserContext } from './components/UserContext';
 import { useEffect, useState } from 'react';
@@ -15,6 +7,9 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const App = () => {
   const [user, setUser] = useState({});
+  const location = useLocation();
+  const navigate = useNavigate();
+  const auth = getAuth();
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -23,18 +18,9 @@ const App = () => {
     }
   }, []);
 
-  // removeUser - 유저 정보를 상태와 로컬 스토리지에서 동시에 제거하는 역할
-  const removeUser = () => {
-    setUser({});
-    localStorage.removeItem('user');
-  };
-
-  const location = useLocation();
-  const navigate = useNavigate();
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/signup') return;
 
-    const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (!user) navigate('/');
     });
@@ -42,7 +28,7 @@ const App = () => {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser, removeUser }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Router />
       </UserContext.Provider>
     </>

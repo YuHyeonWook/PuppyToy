@@ -6,6 +6,7 @@ import '../styles/SingOut.scss';
 const SingOut = () => {
   const navigate = useNavigate();
   const auth = getAuth();
+
   const logOutClick = async () => {
     try {
       await signOut(auth);

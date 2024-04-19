@@ -8,7 +8,7 @@ import { IoMdClose } from 'react-icons/io';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly }) => {
+const WorkspaceModal = ({ setIsModalOpen, selectedItem, setSelectedItem, isReadonly }) => {
   const [schedule, setSchedule] = useState(new Date());
   const [reason, setReason] = useState('');
   const [attendance, setAttendance] = useState('');
@@ -45,7 +45,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
         };
         await addDoc(collection(db, 'absent'), data);
         alert('등록되었습니다.');
-        setModalOpen(false);
+        setIsModalOpen(false);
       } else {
         alert('모두 입력해주세요.');
       }
@@ -60,7 +60,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
       className="modal-background"
       onClick={() => {
         setSelectedItem('');
-        setModalOpen(false);
+        setIsModalOpen(false);
       }}>
       <div
         className="modal"
@@ -72,7 +72,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
           className="modal-close"
           onClick={() => {
             setSelectedItem('');
-            setModalOpen(false);
+            setIsModalOpen(false);
           }}>
           <IoMdClose />
         </span>
@@ -87,14 +87,14 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
                 setAttendance(e.value);
                 setSelectOption(e);
               }}
-              readOnly={readonly}
+              readOnly={isReadonly}
               value={selectOption}
               theme={(theme) => ({
                 ...theme,
                 borderRadius: 10,
                 colors: { ...theme.colors, primary25: '#e9deff', primary: '#c3a3ff' },
               })}
-              isDisabled={readonly}
+              isDisabled={isReadonly}
             />
             <DatePicker
               showIcon
@@ -104,7 +104,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
               className="modal__date"
               selected={schedule}
               onChange={(date) => setSchedule(date)}
-              readOnly={readonly}
+              readOnly={isReadonly}
             />
           </div>
           <textarea
@@ -115,9 +115,9 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
             placeholder="사유"
             value={reason}
             onChange={(e) => setReason(e.target.value)}
-            readOnly={readonly}
+            readOnly={isReadonly}
           />
-          <button className="modal__btn" onClick={handleSubmit} disabled={readonly}>
+          <button className="modal__btn" onClick={handleSubmit} disabled={isReadonly}>
             등록
           </button>
         </div>

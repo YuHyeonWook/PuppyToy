@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebase';
 import { getAuth } from 'firebase/auth';
@@ -19,7 +19,6 @@ export const UserAdd = () => {
     const timeInUtc = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
     const timeInKorea = new Date(timeInUtc + 9 * 60 * 60 * 1000);
     const currentDate = timeInKorea.toISOString().split('T')[0];
-
     return currentDate;
   };
 
@@ -34,7 +33,7 @@ export const UserAdd = () => {
     outWork: '-- : -- : --',
     workDate: getCurrentDate(),
   });
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState('');
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const { setUser } = useContext(UserContext);

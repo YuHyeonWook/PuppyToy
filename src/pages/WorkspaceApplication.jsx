@@ -7,7 +7,7 @@ import '../styles/WorkspaceApplication.scss';
 import Footer from '../components/Footer';
 
 export const WorkspaceApplication = () => {
-  const [modalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [attendance, setAttendance] = useState('');
   const [selectOption, setSelectOption] = useState('');
   const options = [
@@ -16,17 +16,17 @@ export const WorkspaceApplication = () => {
     { value: '결석', label: '결석' },
   ];
   const [selectedItem, setSelectedItem] = useState('');
-  const [readonly, setReadonly] = useState(false);
+  const [isReadonly, setIsReadonly] = useState(false);
 
   const btnClick = () => {
-    setModalOpen(true);
-    setReadonly(false);
+    setIsModalOpen(true);
+    setIsReadonly(false);
   };
 
   const handleItemClick = (itemData) => {
     setSelectedItem(itemData);
-    setModalOpen(true);
-    setReadonly(true);
+    setIsModalOpen(true);
+    setIsReadonly(true);
   };
 
   return (
@@ -53,12 +53,12 @@ export const WorkspaceApplication = () => {
         </button>
       </div>
       <WorkspaceList attendance={attendance} onItemClick={handleItemClick} />
-      {modalOpen && (
+      {isModalOpen && (
         <WorkspaceModal
-          setModalOpen={setModalOpen}
+          setIsModalOpen={setIsModalOpen}
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
-          readonly={readonly}
+          isReadonly={isReadonly}
         />
       )}
     </>
