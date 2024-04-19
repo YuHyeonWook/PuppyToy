@@ -26,27 +26,27 @@
       height: auto;
       border-radius: 5px;
 
-      width: 60px; // Default width
+      width: 60px;
       height: auto;
 
       @media (max-width: 1520px) {
-        width: 55px; // Adjust this value as needed
+        width: 55px;
       }
 
       @media (max-width: 1280px) {
-        width: 50px; // Adjust this value as needed
+        width: 50px;
       }
 
       @media (max-width: 1000px) {
-        width: 45px; // Adjust this value as needed
+        width: 45px;
       }
 
       @media (max-width: 768px) {
-        width: 40px; // Adjust this value as needed
+        width: 40px;
       }
 
       @media (max-width: 580px) {
-        width: 35px; // Adjust this value as needed
+        width: 35px;
       }
     }
     &:hover {
@@ -119,28 +119,28 @@
           }
 
           @media (max-width: 1520px) {
-            width: 45px; // Adjust this value as needed
-            height: 45px; // Adjust this value as needed
+            width: 45px;
+            height: 45px;
           }
 
           @media (max-width: 1280px) {
-            width: 40px; // Adjust this value as needed
-            height: 40px; // Adjust this value as needed
+            width: 40px;
+            height: 40px;
           }
 
           @media (max-width: 1000px) {
-            width: 35px; // Adjust this value as needed
-            height: 35px; // Adjust this value as needed
+            width: 35px;
+            height: 35px;
           }
 
           @media (max-width: 768px) {
-            width: 30px; // Adjust this value as needed
-            height: 30px; // Adjust this value as needed
+            width: 30px;
+            height: 30px;
           }
 
           @media (max-width: 580px) {
-            width: 25px; // Adjust this value as needed
-            height: 25px; // Adjust this value as needed
+            width: 25px;
+            height: 25px;
           }
         }
         span {
