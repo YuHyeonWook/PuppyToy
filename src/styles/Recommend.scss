@@ -7,11 +7,13 @@
 }
 
 .recommend {
+  width: calc(100% - 60px);
   max-width: 1320px;
-  margin: 50px auto;
+  margin: 50px 30px;
   border-radius: 1rem;
   background-color: #fff;
   padding: 1.5rem;
+  flex-grow: 1;
 
   h2 {
     font-family: 'TTTogether';

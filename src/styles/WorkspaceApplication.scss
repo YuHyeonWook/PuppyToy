@@ -1,4 +1,5 @@
 .topSide {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
 
@@ -31,10 +32,11 @@
     }
   }
 }
-.inner {
+.workspace {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 50px;
+  flex-grow: 1;
 
   .list {
     display: flex;

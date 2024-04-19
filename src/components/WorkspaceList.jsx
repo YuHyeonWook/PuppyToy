@@ -33,7 +33,7 @@ const WorkspaceList = ({ attendance, onItemClick }) => {
   }, [db, attendance]);
 
   return (
-    <div className="inner">
+    <div className="workspace">
       <div className="list">
         {listData.map((data) => (
           <div className="list__container" key={data.id} onClick={() => onItemClick(data.data())}>

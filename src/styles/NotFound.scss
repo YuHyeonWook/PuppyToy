@@ -8,7 +8,7 @@
 
 .not-found {
   min-height: 306px;
-  height: calc(100vh - 214px - 134px - 200px);
+  flex-grow: 1;
   margin: 100px 30px;
   display: flex;
   flex-direction: column;
@@ -27,5 +27,6 @@
   &__description {
     font-size: 1.2rem;
     line-height: 2rem;
+    text-align: center;
   }
 }
