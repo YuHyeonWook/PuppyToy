@@ -29,6 +29,8 @@ export const WorkspaceApplication = () => {
     setIsReadonly(true);
   };
 
+  console.log(selectedItem);
+
   return (
     <>
       <Header />

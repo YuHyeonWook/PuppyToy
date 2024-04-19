@@ -78,7 +78,7 @@ const WorkspaceModal = ({ setIsModalOpen, selectedItem, setSelectedItem, isReado
         </span>
         <div className="modal__conent">
           <div className="modal__wrapper">
-            <input className="modal__name" type="text" value={userItem.name} readOnly />
+            <input className="modal__name" type="text" value={selectedItem.name} readOnly />
             <Select
               className="modal__select"
               options={options}
