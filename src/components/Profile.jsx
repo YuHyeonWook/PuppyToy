@@ -69,7 +69,7 @@ const Profile = ({ userData }) => {
                   color: '#000',
                 }}
               />
-              {'출근 시간'}
+              {'등교 시간'}
             </p>
             <p className="value">{userData.inWork}</p>
           </div>
@@ -80,7 +80,7 @@ const Profile = ({ userData }) => {
                   color: '#000',
                 }}
               />
-              {'퇴근 시간'}
+              {'하교 시간'}
             </p>
             <p className="value">{userData.outWork}</p>
           </div>

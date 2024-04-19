@@ -5,7 +5,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 
 const TimeModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setModalOpen }) => {
-  // 출퇴근 버튼 클릭 시 workTime 수정 및 inWork, outWork 변경
+  // 등하교 버튼 클릭 시 workTime 수정 및 inWork, outWork 변경
   const handleWorkTime = () => {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
@@ -38,7 +38,7 @@ const TimeModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setMod
         <h3>현재 시각</h3>
         <div className="current-time">{currentTime}</div>
         <p className="description">
-          {inWork ? (outWork ? '이미 퇴근하셨습니다.' : '퇴근하시겠습니까?') : '출근하시겠습니까?'}
+          {inWork ? (outWork ? '이미 하교하셨습니다.' : '하교하시겠습니까?') : '등교하시겠습니까?'}
         </p>
         <div className="btns">
           <button
@@ -46,7 +46,7 @@ const TimeModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setMod
             type="button"
             onClick={() => handleWorkTime()}
             disabled={inWork && outWork}>
-            {inWork ? (outWork ? '퇴근 완료' : '퇴근 하기') : '출근 하기'}
+            {inWork ? (outWork ? '하교 완료' : '하교 하기') : '등교 하기'}
           </button>
           <button className="btn btn--exit" type="button" onClick={() => setModalOpen(false)}>
             취소 하기

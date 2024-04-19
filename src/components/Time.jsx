@@ -7,8 +7,8 @@ import TimeModal from './TimeModal';
 
 const Time = () => {
   const [currentTime, setCurrentTime] = useState('-- : -- : --'); // 현재 시간
-  const [inWork, setInWork] = useState(false); // 출근 여부
-  const [outWork, setOutWork] = useState(false); // 퇴근 여부
+  const [inWork, setInWork] = useState(false); // 등교 여부
+  const [outWork, setOutWork] = useState(false); // 하교 여부
   const [modalOpen, setModalOpen] = useState(false);
 
   // 한국 기준 Date 객체 반환
@@ -87,7 +87,7 @@ const Time = () => {
         type="button"
         onClick={() => setModalOpen(true)}
         disabled={inWork && outWork}>
-        {inWork ? (outWork ? '퇴근 완료' : '퇴근 하기') : '출근 하기'}
+        {inWork ? (outWork ? '하교 완료' : '하교 하기') : '등교 하기'}
       </button>
       {modalOpen && (
         <TimeModal
