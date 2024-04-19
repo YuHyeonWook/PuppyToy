@@ -34,8 +34,15 @@
 
   ul {
     display: flex;
+    .li-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 30rem;
+    }
     li {
       list-style: none;
+      margin: 0 1rem;
       .link--style {
         text-decoration: none;
         display: block;
@@ -51,14 +58,10 @@
           padding-right: 2rem;
         }
       }
-      &:not(:last-child) {
-        margin-right: 1rem;
-      }
 
       .user--info {
         color: var(--font-color);
         display: flex;
-        // gap: 20px;
         justify-content: center;
         align-items: center;
 

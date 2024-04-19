@@ -16,23 +16,25 @@ const Header = () => {
           <img src={logo} alt="logo" />
         </Link>
         <ul>
-          <li>
-            <NavLink className="link--style" to="/workspaceApplication">
-              근무형태 신청내역
-              <span className="separator"></span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="link--style" to="/userProfile">
-              프로필
-              <span className="separator"></span>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className="link--style" to="/gallery">
-              갤러리
-            </NavLink>
-          </li>
+          <div className="li-group">
+            <li>
+              <NavLink className="link--style" to="/workspaceApplication">
+                근무형태 신청내역
+                <span className="separator"></span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="link--style" to="/userProfile">
+                프로필
+                <span className="separator"></span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="link--style" to="/gallery">
+                갤러리
+              </NavLink>
+            </li>
+          </div>
           <li>
             {user && (
               <div className="user--info" onClick={() => navigate('/userprofile')}>
