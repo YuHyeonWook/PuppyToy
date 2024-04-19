@@ -7,8 +7,8 @@ const Footer = () => {
     {
       name: '유현욱',
       email: 'yho7955@naver.com',
-      github: 'https://yho7955.tistory.com/',
-      blog: 'https://github.com/YuHyeonWook',
+      github: 'https://github.com/YuHyeonWook',
+      blog: 'https://yho7955.tistory.com/',
     },
     {
       name: '김령태',
@@ -25,8 +25,8 @@ const Footer = () => {
     {
       name: '박수민',
       email: 'dogcs1289@naver.com',
-      github: 'https://blog.naver.com/dogcs1289',
-      blog: 'https://github.com/nakjilove',
+      github: 'https://github.com/nakjilove',
+      blog: 'https://blog.naver.com/dogcs1289',
     },
   ];
 
