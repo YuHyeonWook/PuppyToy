@@ -44,7 +44,7 @@ const Footer = () => {
             GitHub Repository
           </a>
           <div className="copyright">
-            Copyright © {new Date().getFullYear()} FastCampus Toy1 - TEAM1.
+            Copyright © {new Date().getFullYear()} FastCampus Toy1 - TEAM1
           </div>
         </div>
         <div className="members">
@@ -52,23 +52,20 @@ const Footer = () => {
             return (
               <div key={member.name} className="member">
                 <div className="name">{member.name}</div>
-                <a
-                  className="email"
-                  href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <AiOutlineMail style={{ color: '#5a5a5a' }} />
-                </a>
-                <a
-                  className="github"
-                  href={member.github}
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  <AiOutlineGithub style={{ color: '#5a5a5a' }} />
-                </a>
-                <a className="blog" href={member.blog} target="_blank" rel="noopener noreferrer">
-                  <AiOutlineBold style={{ color: '#5a5a5a' }} />
-                </a>
+                <div className="links">
+                  <a
+                    href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    <AiOutlineMail style={{ color: '#5a5a5a' }} />
+                  </a>
+                  <a href={member.github} target="_blank" rel="noopener noreferrer">
+                    <AiOutlineGithub style={{ color: '#5a5a5a' }} />
+                  </a>
+                  <a href={member.blog} target="_blank" rel="noopener noreferrer">
+                    <AiOutlineBold style={{ color: '#5a5a5a' }} />
+                  </a>
+                </div>
               </div>
             );
           })}

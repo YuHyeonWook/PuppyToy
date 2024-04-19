@@ -1,9 +1,8 @@
 .dog {
   width: 330px;
-  border: 10px solid transparent;
   border-radius: 10px;
   box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.04);
-  padding: 20px;
+  padding: 30px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -72,6 +71,30 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .dog {
+    width: 250px;
+    padding: 20px;
+
+    &__image {
+      width: 210px;
+      height: 210px;
+    }
+
+    &__info {
+      width: 210px;
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      > div {
+        font-size: 0.8rem;
       }
     }
   }

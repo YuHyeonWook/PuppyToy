@@ -20,6 +20,7 @@
     font-size: 3rem;
     font-weight: 400;
     text-align: center;
+    word-break: keep-all;
     width: fit-content;
     margin: 0 auto;
     margin-bottom: 1.5rem;
@@ -47,6 +48,25 @@
       box-shadow:
         rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
         rgba(0, 0, 0, 0.08) 0px 0px 1px 1px;
+    }
+  }
+}
+
+@media (max-width: 807px) {
+  .recommend {
+    max-width: 600px;
+    padding: 1.5rem 4rem;
+
+    h2 {
+      font-size: 2.1rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .recommend {
+    h2 {
+      font-size: 1.5rem;
     }
   }
 }
