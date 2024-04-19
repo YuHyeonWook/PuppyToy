@@ -66,9 +66,17 @@
         width: 60%;
         height: auto;
         text-align: center;
-        .css-reqq1a-control .css-art2ul-ValueContainer2 {
+        .css-reqq1a-control {
           cursor: pointer;
-          max-height: 50px;
+          .css-w9q2zk-Input2 > input {
+            height: 30px;
+          }
+        }
+        .css-1jxdj3m-control {
+          cursor: pointer;
+          .css-w9q2zk-Input2 > input {
+            height: 30px;
+          }
         }
       }
       .react-datepicker-wrapper {
