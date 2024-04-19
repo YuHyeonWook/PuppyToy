@@ -1,16 +1,19 @@
 import { getAuth, signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from './UserContext';
 import '../styles/SingOut.scss';
 
 const SingOut = () => {
   const navigate = useNavigate();
   const auth = getAuth();
+  const { setUser } = useContext(UserContext);
 
   const logOutClick = async () => {
     try {
       await signOut(auth);
       localStorage.removeItem('user');
+      setUser(null);
       alert('로그아웃 되었습니다.');
       navigate('/');
     } catch (error) {

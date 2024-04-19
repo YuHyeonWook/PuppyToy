@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Login.scss';
 import { useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { UserContext } from '../components/UserContext';
+
+import '../styles/Login.scss';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,6 +13,7 @@ export const Login = () => {
   const navigate = useNavigate();
   const auth = getAuth();
   const db = getFirestore();
+  const { setUser } = useContext(UserContext);
 
   const register = async (e) => {
     try {
@@ -21,6 +24,8 @@ export const Login = () => {
         const docRef = doc(db, 'newUsers', userUid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
+          const userContextData = { id: userUid, ...docSnap.data() };
+          setUser(userContextData);
           localStorage.setItem('user', JSON.stringify({ id: userUid, ...docSnap.data() }));
           navigate('/home');
         } else {
