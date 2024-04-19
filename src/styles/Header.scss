@@ -7,6 +7,11 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
   padding-right: 2rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: var(--background-color);
 
   .logo {
     margin: 1rem;
@@ -14,8 +19,9 @@
     font-size: bold;
     text-decoration: none;
     color: var(--font-color);
+
     img {
-      width: 80px;
+      width: 60px;
       height: auto;
       border-radius: 5px;
     }
@@ -27,7 +33,6 @@
 
   ul {
     display: flex;
-    gap: 30px;
     li {
       list-style: none;
       .link--style {
@@ -35,7 +40,7 @@
         display: block;
         color: var(--font-color);
         padding: 0.9rem;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         &:hover {
           color: var(--hover-color);
           border-radius: 5px;
@@ -45,11 +50,14 @@
           padding-right: 2rem;
         }
       }
+      &:not(:last-child) {
+        margin-right: 1rem;
+      }
 
       .user--info {
         color: var(--font-color);
         display: flex;
-        gap: 10px;
+        // gap: 20px;
         justify-content: center;
         align-items: center;
 
