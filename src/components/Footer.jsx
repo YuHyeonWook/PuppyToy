@@ -57,17 +57,17 @@ const Footer = () => {
                   href={`https://mail.google.com/mail/?view=cm&fs=1&to=${member.email}`}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <AiOutlineMail style={{ color: '#000' }} />
+                  <AiOutlineMail style={{ color: '#5a5a5a' }} />
                 </a>
                 <a
                   className="github"
                   href={member.github}
                   target="_blank"
                   rel="noopener noreferrer">
-                  <AiOutlineGithub style={{ color: '#000' }} />
+                  <AiOutlineGithub style={{ color: '#5a5a5a' }} />
                 </a>
                 <a className="blog" href={member.blog} target="_blank" rel="noopener noreferrer">
-                  <AiOutlineBold style={{ color: '#000' }} />
+                  <AiOutlineBold style={{ color: '#5a5a5a' }} />
                 </a>
               </div>
             );
