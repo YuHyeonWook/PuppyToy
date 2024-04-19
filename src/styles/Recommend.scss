@@ -1,0 +1,72 @@
+@font-face {
+  font-family: 'TTTogether';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/TTTogetherA.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.recommend {
+  width: calc(100% - 60px);
+  max-width: 1320px;
+  margin: 50px 30px;
+  border-radius: 1rem;
+  background-color: #fff;
+  padding: 1.5rem;
+  flex-grow: 1;
+
+  h2 {
+    font-family: 'TTTogether';
+    font-size: 3rem;
+    font-weight: 400;
+    text-align: center;
+    word-break: keep-all;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .dogs {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+    .spinner {
+      position: static;
+      transform: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 50px 0;
+    }
+
+    .dog {
+      box-shadow:
+        rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+        rgba(0, 0, 0, 0.08) 0px 0px 1px 1px;
+    }
+  }
+}
+
+@media (max-width: 807px) {
+  .recommend {
+    max-width: 600px;
+    padding: 1.5rem 4rem;
+
+    h2 {
+      font-size: 2.1rem;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .recommend {
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}

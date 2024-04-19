@@ -1,0 +1,90 @@
+$arrow-transition: transform 0.2s linear;
+$box-radius: 0.5rem;
+$box-background: #eeeeee;
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+}
+
+li > button {
+  width: 100%;
+  text-align: start;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+.wrapper-box {
+  position: relative;
+  border-radius: $box-radius;
+  width: 60%;
+  height: 45px;
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform-origin: center;
+    transform: translateY(-50%);
+    transition: $arrow-transition;
+
+    &.open {
+      transform: translateY(-50%) rotate(0.5turn);
+    }
+  }
+
+  .input-box {
+    width: 100%;
+    height: 45px;
+    font-size: 15px;
+    padding: 0.5rem;
+    display: block;
+    border: none;
+    border-radius: $box-radius;
+    outline: none;
+    background-color: $box-background;
+    cursor: pointer;
+    padding: 20px;
+  }
+
+  .ul-box {
+    width: 100%;
+    max-height: 0;
+    position: absolute;
+    overflow: hidden;
+    list-style: none;
+
+    &.open {
+      max-height: 7rem;
+      padding: 0.2rem;
+      left: 0;
+      z-index: 100;
+      background-color: #fff;
+      border: 1px solid $box-background;
+      border-radius: $box-radius;
+      overflow-y: auto;
+
+      li {
+        height: 2rem;
+        margin: 0.2rem;
+        border-radius: $box-radius;
+
+        &:hover {
+          background-color: lightgray;
+        }
+
+        &.selected {
+          background-color: $box-background;
+
+          button {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

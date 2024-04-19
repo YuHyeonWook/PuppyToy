@@ -1,0 +1,52 @@
+.time {
+  width: 250px;
+  height: 200px;
+  border-radius: 16px;
+  background-color: #fff;
+  margin: 80px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  h3 {
+    font-size: 28px;
+    font-weight: 900;
+  }
+
+  .current-time {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .btn {
+    font-size: 16px;
+    font-weight: 700;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 16px;
+    margin-top: 5px;
+    background-color: #8ac0ff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #6998ce;
+    }
+
+    &:disabled {
+      color: #fff;
+      background-color: #a7b2be;
+      cursor: default;
+    }
+
+    &--exit {
+      background-color: #ff5454;
+
+      &:hover {
+        background-color: #be4242;
+      }
+    }
+  }
+}

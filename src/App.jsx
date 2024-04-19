@@ -1,25 +1,36 @@
-import { Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import SignUp from './pages/SignUp';
-import Home from './pages/Home';
-import UserAdd from './pages/UserAdd';
-import UserProfile from './pages/UserProfile';
-import WorkspaceApplication from './pages/WorkspaceApplication';
-import Gallery from './pages/Gallery';
 import './App.scss';
+import { UserContext } from './components/UserContext';
+import { useEffect, useState } from 'react';
+import { Router } from './router/Router';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const App = () => {
+  const [user, setUser] = useState({});
+  const location = useLocation();
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (location.pathname === '/' || location.pathname === '/signup') return;
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) navigate('/');
+    });
+  }, [location.pathname]);
+
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/useradd" element={<UserAdd />} />
-        <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/workspaceapplication" element={<WorkspaceApplication />} />
-        <Route path="/gallery" element={<Gallery />} />
-      </Routes>
+      <UserContext.Provider value={{ user, setUser }}>
+        <Router />
+      </UserContext.Provider>
     </>
   );
 };
