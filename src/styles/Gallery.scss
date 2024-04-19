@@ -21,3 +21,9 @@
     align-items: center;
   }
 }
+
+@media (max-width: 400px) {
+  .gallery {
+    padding: 0 30px;
+  }
+}

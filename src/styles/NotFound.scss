@@ -23,10 +23,12 @@
     font-family: 'TTTogether';
     font-size: 4rem;
     margin-bottom: 2rem;
+    text-align: center;
   }
   &__description {
     font-size: 1.2rem;
     line-height: 2rem;
     text-align: center;
+    word-break: keep-all;
   }
 }
