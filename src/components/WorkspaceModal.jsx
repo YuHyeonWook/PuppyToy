@@ -8,11 +8,12 @@ import { IoMdClose } from 'react-icons/io';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly }) => {
+const WorkspaceModal = ({ setIsModalOpen, selectedItem, setSelectedItem, readonly }) => {
   const [schedule, setSchedule] = useState(new Date());
   const [reason, setReason] = useState('');
   const [attendance, setAttendance] = useState('');
   const [selectOption, setSelectOption] = useState('');
+  const [userName, setUserName] = useState('');
 
   // list 누르면 선택된 모달창에 데이터가  schedule, reason, attendance에 들어가짐
   useEffect(() => {
@@ -21,6 +22,9 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
       setReason(selectedItem.reason);
       setAttendance(selectedItem.attendance);
       setSelectOption({ value: selectedItem.attendance, label: selectedItem.attendance });
+      setUserName(selectedItem.name);
+    } else {
+      setUserName(userItem.name);
     }
   }, [selectedItem]);
 
@@ -45,7 +49,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
         };
         await addDoc(collection(db, 'absent'), data);
         alert('등록되었습니다.');
-        setModalOpen(false);
+        setIsModalOpen(false);
       } else {
         alert('모두 입력해주세요.');
       }
@@ -60,7 +64,7 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
       className="modal-background"
       onClick={() => {
         setSelectedItem('');
-        setModalOpen(false);
+        setIsModalOpen(false);
       }}>
       <div
         className="modal"
@@ -72,13 +76,13 @@ const WorkspaceModal = ({ setModalOpen, selectedItem, setSelectedItem, readonly 
           className="modal-close"
           onClick={() => {
             setSelectedItem('');
-            setModalOpen(false);
+            setIsModalOpen(false);
           }}>
           <IoMdClose />
         </span>
         <div className="modal__conent">
           <div className="modal__wrapper">
-            <input className="modal__name" type="text" value={selectedItem.name} readOnly />
+            <input className="modal__name" type="text" value={userName} readOnly />
             <Select
               className="modal__select"
               options={options}
