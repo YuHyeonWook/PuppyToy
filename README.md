@@ -12,32 +12,32 @@
 
 ## 🔨 사용 기술 스택
 
-- Programming
+### Programming
 
-  ![JavaScript](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=JAVASCRIPT&logoColor=white) ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=SASS&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JAVASCRIPT-F7DF1E?style=for-the-badge&logo=JAVASCRIPT&logoColor=white) ![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=SASS&logoColor=white) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-- Database
+### Database
 
-  ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 
-- Design
+### Design
 
-  ![FIGMA](https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![FIGMA](https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
 
-- Collaboration tool
+### Collaboration tool
 
-  ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-- Deploying
+### Deploying
 
-  ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## 팀원 소개 및 구현 부분
 
 | <img src="https://avatars.githubusercontent.com/u/110236953?v=4" width="150px"/> |                                                                       <img src="https://avatars.githubusercontent.com/u/89022828?v=4" width="150px" />                                                                        |                                     <img src="https://avatars.githubusercontent.com/u/79198245?v=4" width="150px" />                                     | <img src="https://avatars.githubusercontent.com/u/133835167?v=4" width="150px" /> |
 | :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-|                   FE: [유형욱](https://github.com/YuHyeonWook)                   |                                                                                            FE: [김령태](https://github.com/catrt)                                                                                             |                                                      FE: [김여진](https://github.com/Yeojin-Kim12)                                                       |                    FE: [박수민](https://github.com/nakjilove)                     |
-|                                   반응형 구현                                    | 현재 시간 구현<br>등하교 버튼 구현<br>등하교 모달 구현<br>home 페이지 레이아웃<br>gallery 페이지 레이아웃<br>강아지 컴포넌트 디자인<br>profile 구현<br>footer 구현<br>404 페이지 구현<br>페이지 접근 권한 구현<br>반응형 구현 | 로그인, 회원가입 구현<br>로그아웃 버튼 구현<br>결석 페이지 레이아웃<br>결석 modal 구현<br>결석 카테고리 필터링<br>결석 리스트 시간 필터링<br>반응형 구현 |                               갤러리 페이지 디자인                                |
+|                   FE: [유현욱](https://github.com/YuHyeonWook)                   |                                                                                            FE: [김령태](https://github.com/catrt)                                                                                             |                                                      FE: [김여진](https://github.com/Yeojin-Kim12)                                                       |                    FE: [박수민](https://github.com/nakjilove)                     |
+|                    유저 생성 페이지 구현 </br> 이미지 업로드                     | 현재 시간 구현<br>등하교 버튼 구현<br>등하교 모달 구현<br>home 페이지 레이아웃<br>gallery 페이지 레이아웃<br>강아지 컴포넌트 디자인<br>profile 구현<br>footer 구현<br>404 페이지 구현<br>페이지 접근 권한 구현<br>반응형 구현 | 로그인, 회원가입 구현<br>로그아웃 버튼 구현<br>결석 페이지 레이아웃<br>결석 modal 구현<br>결석 카테고리 필터링<br>결석 리스트 시간 필터링<br>반응형 구현 |                               갤러리 페이지 디자인                                |
 
 ## Router 구조
 
@@ -105,9 +105,9 @@
 
 ## 느낀 점 & 아쉬운 점
 
-### 유형욱
+### 유현욱
 
--
+- 팀 프로젝트를 하면서 어려운 부분도 있었지만, 돌이켜보면 알게된 것이 더 많은 것 같다.
 
 ### 김령태
 
