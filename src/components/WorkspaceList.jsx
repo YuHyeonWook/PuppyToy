@@ -9,7 +9,6 @@ const WorkspaceList = ({ attendance, onItemClick }) => {
 
   useEffect(() => {
     let unsub, q;
-
     //오늘 날짜 포함, new Date()를 하면 시간 때문에 오늘 날짜임에도 보이지 않음
     const today = new Date();
     const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());

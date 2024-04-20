@@ -5,7 +5,6 @@ const Dropdown = ({ list, onValueChange, placeholder }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const [inputValue, setInputValue] = useState('');
-
   const inputEl = useRef(null);
   const wrapperEl = useRef(null);
   const ulEl = useRef(null);

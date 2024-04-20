@@ -5,10 +5,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { db, storage } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/UserContext';
-import ComonDropdown from '../components/CommonDropdown';
+import CommonDropdown from '../components/CommonDropdown';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserAdd.scss';
 import '../styles/Loading.scss';
 
@@ -33,6 +33,7 @@ export const UserAdd = () => {
     outWork: '-- : -- : --',
     workDate: getCurrentDate(),
   });
+
   const [file, setFile] = useState('');
   const [progress, setProgress] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -113,7 +114,6 @@ export const UserAdd = () => {
       try {
         const auth = getAuth();
         const uid = auth.currentUser.uid;
-
         // Firebase에 유저 데이터 저장
         await setDoc(doc(db, 'newUsers', uid), newUser);
         // localStorage에 유저 데이터 저장
@@ -170,7 +170,7 @@ export const UserAdd = () => {
             value={newUser.name}
             onChange={handleChange}
           />
-          <ComonDropdown
+          <CommonDropdown
             list={['수컷', '암컷']}
             onValueChange={handleDropdownValueUpdate('gender')}
             placeholder={'성별'}
@@ -191,7 +191,7 @@ export const UserAdd = () => {
             value={newUser.breed}
             onChange={handleChange}
           />
-          <ComonDropdown
+          <CommonDropdown
             list={['반장', '부반장', '유치원생']}
             onValueChange={handleDropdownValueUpdate('position')}
             placeholder={'직책'}
