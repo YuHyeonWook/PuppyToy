@@ -88,12 +88,19 @@
 ## 구현
 
 - 회원가입 / 로그인 / 유저정보
+
   ![dogManagement1](https://github.com/FC8-TOY1/DogManagementService/assets/79198245/dc451ca8-e945-4777-bc61-38a809aeaf52)
+
 - 메인화면 / 등하교 / 프로필
+
   ![dogManagement2](https://github.com/FC8-TOY1/DogManagementService/assets/79198245/364c3837-c1bc-43e4-a30f-2bbf1ec8fa1e)
+
 - 메인 공지사항 / 갤러리
+
   ![dogManagement3](https://github.com/FC8-TOY1/DogManagementService/assets/79198245/29d56978-353b-46dd-8c2b-8ff5007751eb)
+
 - 결석 신청내역 / 필터링
+
   ![dogManagement4](https://github.com/FC8-TOY1/DogManagementService/assets/79198245/117a99ea-c868-41e6-aee8-43433e41cff5)
 
 ## 느낀 점 & 아쉬운 점
