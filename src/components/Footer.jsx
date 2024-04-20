@@ -30,8 +30,6 @@ const Footer = () => {
     },
   ];
 
-  const [members] = useState(membersData);
-
   return (
     <footer>
       <div className="inner">
@@ -48,7 +46,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="members">
-          {members.map((member) => {
+          {membersData.map((member) => {
             return (
               <div key={member.name} className="member">
                 <div className="name">{member.name}</div>

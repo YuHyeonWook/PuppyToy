@@ -13,7 +13,7 @@ const SingOut = () => {
     try {
       await signOut(auth);
       localStorage.removeItem('user');
-      setUser(null);
+      setUser('');
       alert('로그아웃 되었습니다.');
       navigate('/');
     } catch (error) {
