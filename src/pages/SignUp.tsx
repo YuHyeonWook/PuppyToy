@@ -10,7 +10,7 @@ export const SignUp = () => {
   const navigate = useNavigate();
   const auth = getAuth();
 
-  const register = async (e) => {
+  const register = async () => {
     try {
       if (email === '' || password === '' || confirmPassword === '') {
         alert('전부 입력해주세요.');
