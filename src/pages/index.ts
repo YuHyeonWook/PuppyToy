@@ -5,4 +5,4 @@ export * from './UserAdd';
 export * from './UserProfile';
 export * from './WorkspaceApplication';
 export * from './Gallery';
-export * from './NotFound';
+export * from './Error';

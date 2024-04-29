@@ -1,13 +1,13 @@
 import { UserContext } from './components/userContext';
 import { useEffect, useState } from 'react';
-import { Router } from './router/Router';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { RouterProvider, createBrowserRouter, useLocation, useNavigate } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 import { User } from './types/UserTypes';
+import routes from './router/routes';
 import './App.scss';
 
 const initialUser: User = {
-  age: '',
+  age: 0,
   breed: '',
   gender: '',
   id: '',
@@ -19,10 +19,10 @@ const initialUser: User = {
   workDate: '',
 };
 
+const router = createBrowserRouter(routes);
+
 const App = () => {
   const [user, setUser] = useState<User | null>(initialUser);
-  const location = useLocation();
-  const navigate = useNavigate();
   const auth = getAuth();
 
   useEffect(() => {
@@ -32,19 +32,19 @@ const App = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (location.pathname === '/' || location.pathname === '/signup') return;
+  // const navigate = useNavigate();
+  // const location = useLocation();
+  // useEffect(() => {
+  //   if (location.pathname === '/' || location.pathname === '/signup') return;
+  //   onAuthStateChanged(auth, async (user) => {
+  //     if (!user) navigate('/');
+  //   });
+  // }, [location.pathname]);
 
-    onAuthStateChanged(auth, async (user) => {
-      if (!user) navigate('/');
-    });
-  }, [location.pathname]);
-
-  console.log(user);
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>
-        <Router />
+        <RouterProvider router={router} />
       </UserContext.Provider>
     </>
   );

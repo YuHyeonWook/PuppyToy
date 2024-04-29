@@ -1,9 +1,8 @@
 import '../styles/NotFound.scss';
-import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-export const NotFound = () => {
+export const Error = () => {
   return (
     <>
       <Header />
