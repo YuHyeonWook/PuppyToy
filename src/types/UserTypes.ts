@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export interface User {
-  age: string;
+  age: number;
   breed: string;
   gender: string;
   id: string;

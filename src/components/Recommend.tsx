@@ -1,7 +1,7 @@
 import '../styles/Recommend.scss';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Dog from '../components/Dog';
+import Dog from './Dog';
 
 const Recommend = () => {
   const [dogsData, setDogsData] = useState([]);

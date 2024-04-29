@@ -7,7 +7,7 @@ import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/userContext';
-import CommonDropdown from '../components/CommonDropdown';
+import Dropdown from '../components/Dropdown';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserAdd.scss';
 import '../styles/Loading.scss';
@@ -25,7 +25,7 @@ export const UserAdd = () => {
   const [newUser, setNewUser] = useState({
     name: '',
     gender: '',
-    age: '',
+    age: 0,
     breed: '',
     position: '',
     imageUrl: '',
@@ -123,7 +123,7 @@ export const UserAdd = () => {
         setNewUser({
           name: '',
           gender: '',
-          age: '',
+          age: 0,
           breed: '',
           position: '',
           imageUrl: '',
@@ -170,7 +170,7 @@ export const UserAdd = () => {
             value={newUser.name}
             onChange={handleChange}
           />
-          <CommonDropdown
+          <Dropdown
             list={['수컷', '암컷']}
             onValueChange={handleDropdownValueUpdate('gender')}
             placeholder={'성별'}
@@ -191,7 +191,7 @@ export const UserAdd = () => {
             value={newUser.breed}
             onChange={handleChange}
           />
-          <CommonDropdown
+          <Dropdown
             list={['반장', '부반장', '유치원생']}
             onValueChange={handleDropdownValueUpdate('position')}
             placeholder={'직책'}
