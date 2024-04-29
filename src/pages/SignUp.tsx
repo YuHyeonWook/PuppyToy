@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Login.scss';
+import { FirebaseError } from 'firebase/app';
 
 export const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setconfirmPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setconfirmPassword] = useState<string>('');
   const navigate = useNavigate();
   const auth = getAuth();
 
@@ -27,14 +28,16 @@ export const SignUp = () => {
         navigate('/');
       }
     } catch (error) {
-      if (error.code === 'auth/invalid-email') {
-        alert('이메일 형식이 틀립니다.');
-      }
-      if (error.code === 'auth/email-already-exists') {
-        alert('해당 이메일은 사용중입니다.');
-      }
-      if (error.code === 'auth/weak-password') {
-        alert('6자 이상의 비밀번호를 입력해주세요.');
+      if (error instanceof FirebaseError) {
+        if (error.code === 'auth/invalid-email') {
+          alert('이메일 형식이 틀립니다.');
+        }
+        if (error.code === 'auth/email-already-exists') {
+          alert('해당 이메일은 사용중입니다.');
+        }
+        if (error.code === 'auth/weak-password') {
+          alert('6자 이상의 비밀번호를 입력해주세요.');
+        }
       }
     }
   };
