@@ -1,12 +1,26 @@
-import './App.scss';
-import { UserContext } from './components/UserContext';
+import { UserContext } from './components/userContext';
 import { useEffect, useState } from 'react';
 import { Router } from './router/Router';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { User } from './types/UserTypes';
+import './App.scss';
+
+const initialUser: User = {
+  age: '',
+  breed: '',
+  gender: '',
+  id: '',
+  imageUrl: '',
+  inWork: '',
+  name: '',
+  outWork: '',
+  position: '',
+  workDate: '',
+};
 
 const App = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<User | null>(initialUser);
   const location = useLocation();
   const navigate = useNavigate();
   const auth = getAuth();
@@ -26,6 +40,7 @@ const App = () => {
     });
   }, [location.pathname]);
 
+  console.log(user);
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>

@@ -1,7 +1,7 @@
 import { getAuth, signOut } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from './UserContext';
+import { UserContext } from './userContext';
 import '../styles/SingOut.scss';
 
 const SingOut = () => {

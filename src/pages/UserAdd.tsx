@@ -6,7 +6,7 @@ import { db, storage } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { LuDog } from 'react-icons/lu';
-import { UserContext } from '../components/UserContext';
+import { UserContext } from '../components/userContext';
 import CommonDropdown from '../components/CommonDropdown';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserAdd.scss';

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import React from 'react';
 import Header from '../components/Header';
 import Profile from '../components/Profile';
 import { doc, getDoc } from 'firebase/firestore';
