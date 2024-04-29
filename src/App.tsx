@@ -1,7 +1,7 @@
 import { UserContext } from './components/userContext';
 import { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter, useLocation, useNavigate } from 'react-router-dom';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { User } from './types/UserTypes';
 import routes from './router/routes';
 import './App.scss';
@@ -31,15 +31,6 @@ const App = () => {
       setUser(JSON.parse(storedUser));
     }
   }, []);
-
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // useEffect(() => {
-  //   if (location.pathname === '/' || location.pathname === '/signup') return;
-  //   onAuthStateChanged(auth, async (user) => {
-  //     if (!user) navigate('/');
-  //   });
-  // }, [location.pathname]);
 
   return (
     <>

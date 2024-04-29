@@ -8,6 +8,8 @@ import {
   Gallery,
   Error,
 } from '../pages';
+import ProtectedRoute from '../pages/ProtectedRoute';
+import PATH from '../lib/const/path';
 
 const routes = [
   {
@@ -16,33 +18,61 @@ const routes = [
   },
   {
     path: 'signup',
-    element: <SignUp />,
+    element: (
+      <ProtectedRoute>
+        <SignUp />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: 'useradd',
-    element: <UserAdd />,
+    element: (
+      <ProtectedRoute>
+        <UserAdd />,
+      </ProtectedRoute>
+    ),
   },
   {
     path: 'home',
-    element: <Home />,
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: 'userprofile',
-        element: <UserProfile />,
+        element: (
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'workspaceapplication',
-        element: <WorkspaceApplication />,
+        element: (
+          <ProtectedRoute>
+            <WorkspaceApplication />
+          </ProtectedRoute>
+        ),
       },
       {
         path: 'gallery',
-        element: <Gallery />,
+        element: (
+          <ProtectedRoute>
+            <Gallery />,
+          </ProtectedRoute>
+        ),
       },
     ],
   },
   {
     path: '*',
-    element: <Error />,
+    element: (
+      <ProtectedRoute>
+        <Error />,
+      </ProtectedRoute>
+    ),
   },
 ];
 
