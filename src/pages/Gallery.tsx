@@ -6,32 +6,20 @@ import Footer from '../components/Footer';
 import '@styles/Gallery.scss';
 import '@styles/Loading.scss';
 import Loading from '../components/Loading';
+import { fetchDogs } from '../api/fetchDogs';
 
 export const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchDogs = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get('https://api.thedogapi.com/v1/images/search', {
-          params: {
-            limit: 16,
-            size: 'small',
-            has_breeds: true,
-          },
-          headers: {
-            'x-api-key': import.meta.env.VITE_THEDOG_API_KEY,
-          },
-        });
-        setDogsData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error API dogs:', error);
-      }
+    const getDogs = async () => {
+      setIsLoading(true);
+      const dogsData = await fetchDogs({ limitNumber: 16 });
+      setDogsData(dogsData);
+      setIsLoading(false);
     };
-    fetchDogs();
+    getDogs();
   }, []);
 
   return (

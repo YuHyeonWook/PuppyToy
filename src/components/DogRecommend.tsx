@@ -1,34 +1,21 @@
-import '@styles/Recommend.scss';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import DogInfo from './DogInfo';
 import Loading from './Loading';
+import { fetchDogs } from '../api/fetchDogs';
+import '@styles/Recommend.scss';
 
 const DogRecommend = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const fetchDogs = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get('https://api.thedogapi.com/v1/images/search', {
-          params: {
-            limit: 3,
-            size: 'small',
-            has_breeds: true,
-          },
-          headers: {
-            'x-api-key': import.meta.env.VITE_THEDOG_API_KEY,
-          },
-        });
-        setDogsData(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Error API dogs:', error);
-      }
+    const getDogs = async () => {
+      setIsLoading(true);
+      const dogsData = await fetchDogs({ limitNumber: 3 });
+      setDogsData(dogsData);
+      setIsLoading(false);
     };
-    fetchDogs();
+    getDogs();
   }, []);
 
   return (
