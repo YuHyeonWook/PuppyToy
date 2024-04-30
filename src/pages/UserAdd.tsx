@@ -32,6 +32,13 @@ export const UserAdd = () => {
   const [progress, setProgress] = useState(0);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+  // const [isUploading, setIsUploading] = useState(false);
+
+  const handleUpload = () => {
+    if (file) {
+      uploadFile();
+    }
+  };
 
   const uploadFile = useCallback(() => {
     if (file) {
@@ -85,13 +92,14 @@ export const UserAdd = () => {
     setNewUser((prev) => ({ ...prev, imageUrl: downloadUrl }));
   };
 
-  useEffect(() => {
-    uploadFile();
-  }, [uploadFile]);
-
   const handleFileUpload = (e) => {
     const file = e.target.files[0];
     setFile(file);
+    if (file) {
+      toast.info('이미지 등록완료!! 업로드 버튼을 누르시오', {
+        autoClose: 2000,
+      });
+    }
   };
 
   const handleChange = (e) => {
@@ -144,6 +152,7 @@ export const UserAdd = () => {
             )}
           </label>
           <input id="file-upload" type="file" onChange={handleFileUpload} />
+          <button onClick={handleUpload}>업로드</button>
           <input
             className="userAdd__input"
             type="text"
