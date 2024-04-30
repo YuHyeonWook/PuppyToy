@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import DogInfo from '../components/DogInfo';
 import '@styles/Gallery.scss';
 import '@styles/Loading.scss';
-import Loading from '../components/Loading';
+import Loading from '../common/Loading';
 import { fetchDogs } from '../api/fetchDogs';
 import { Layout } from '../components/layout/Layout';
 
