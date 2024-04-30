@@ -1,5 +1,4 @@
-import '../styles/Footer.scss';
-import React, { useState } from 'react';
+import '@styles/Footer.scss';
 import { AiOutlineMail, AiOutlineGithub, AiOutlineBold } from 'react-icons/ai';
 
 const membersData = [
