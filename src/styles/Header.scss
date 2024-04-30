@@ -96,7 +96,8 @@
           color: var(--hover-color);
           border-radius: 5px;
         }
-        .separator {
+        &::after {
+          content: '';
           border-right: 1px solid var(--border-color);
           padding-right: 2rem;
         }

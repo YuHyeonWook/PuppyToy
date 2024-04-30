@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { UserContext } from './userContext';
 import logo from '../assets/logo/HeaderLogo.png';
-import '../styles/Header.scss';
+import '@styles/Header.scss';
 import SingOut from './SingOut';
 
 const Header = () => {
@@ -19,13 +19,11 @@ const Header = () => {
           <li>
             <NavLink className="link--style" to="/workspaceApplication">
               결석 신청내역
-              <span className="separator"></span>
             </NavLink>
           </li>
           <li>
             <NavLink className="link--style" to="/userProfile">
               프로필
-              <span className="separator"></span>
             </NavLink>
           </li>
           <li>
