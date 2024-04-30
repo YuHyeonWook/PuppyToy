@@ -1,4 +1,4 @@
-import '../styles/Dog.scss';
+import '@styles/DogInfo.scss';
 
 const DogInfo = ({ dog }: any) => {
   return (
