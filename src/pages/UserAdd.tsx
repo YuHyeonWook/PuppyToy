@@ -9,9 +9,8 @@ import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/userContext';
 import Dropdown from '../common/Dropdown';
 import 'react-toastify/dist/ReactToastify.css';
-import '../styles/UserAdd.scss';
-import '../styles/Loading.scss';
-import Loading from '../components/Loading';
+import '@styles/UserAdd.scss';
+import '@styles/Loading.scss';
 
 export const UserAdd = () => {
   // 한국 기준 CurrentDate 문자열 반환
