@@ -20,12 +20,12 @@ const WorkspaceList = ({ attendance, onItemClick }) => {
         where('date', '>=', Timestamp.fromDate(todayDate)),
       );
       unsub = onSnapshot(q, (doc) => {
-        setListData(doc.docs);
+        setListData(doc.docs.map((document) => document.data()));
       });
     } else {
       q = query(collection(db, 'absent'), where('date', '>=', Timestamp.fromDate(todayDate)));
       unsub = onSnapshot(q, (doc) => {
-        setListData(doc.docs);
+        setListData(doc.docs.map((document) => document.data()));
       });
     }
     return () => unsub();
@@ -35,14 +35,12 @@ const WorkspaceList = ({ attendance, onItemClick }) => {
     <div className="workspace">
       <div className="list">
         {listData.map((data) => (
-          <div className="list__container" key={data.id} onClick={() => onItemClick(data.data())}>
-            <div className="list__name">{data.data().name}</div>
-            <div className="list__attendance">{data.data().attendance}</div>
-            <div className="list__date">
-              {format(data.data().date.toDate(), 'yyyy년 MM월 dd일')}
-            </div>
+          <div className="list__container" key={data.id} onClick={() => onItemClick(data)}>
+            <div className="list__name">{data.name}</div>
+            <div className="list__attendance">{data.attendance}</div>
+            <div className="list__date">{format(data.date.toDate(), 'yyyy년 MM월 dd일')}</div>
             <div className="list__under"></div>
-            <div className="list__reason">{data.data().reason}</div>
+            <div className="list__reason">{data.reason}</div>
           </div>
         ))}
       </div>
