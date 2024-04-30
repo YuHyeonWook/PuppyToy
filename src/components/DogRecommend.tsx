@@ -1,9 +1,10 @@
-import '../styles/Recommend.scss';
+import '@styles/Recommend.scss';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Dog from './Dog';
+import DogInfo from './DogInfo';
+import Loading from './Loading';
 
-const Recommend = () => {
+const DogRecommend = () => {
   const [dogsData, setDogsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -35,15 +36,11 @@ const Recommend = () => {
       <h2>오늘의 귀여운 강아지</h2>
       <div className="dogs">
         {isLoading ? (
-          <div className="spinner">
-            <span className="spinner-inner-1"></span>
-            <span className="spinner-inner-2"></span>
-            <span className="spinner-inner-3"></span>
-          </div>
+          <Loading />
         ) : (
           <>
             {dogsData.map((dog) => (
-              <Dog key={dog.id} dog={dog} />
+              <DogInfo key={dog.id} dog={dog} />
             ))}
           </>
         )}
@@ -52,4 +49,4 @@ const Recommend = () => {
   );
 };
 
-export default Recommend;
+export default DogRecommend;

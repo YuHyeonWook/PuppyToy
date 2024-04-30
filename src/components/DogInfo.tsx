@@ -1,7 +1,6 @@
 import '../styles/Dog.scss';
-import React from 'react';
 
-const Dog = ({ dog }) => {
+const DogInfo = ({ dog }: any) => {
   return (
     <div className="dog">
       <div className="dog__image">
@@ -39,4 +38,4 @@ const Dog = ({ dog }) => {
   );
 };
 
-export default Dog;
+export default DogInfo;

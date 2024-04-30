@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
-import Dog from '../components/Dog';
+import DogInfo from '../components/DogInfo';
 import Footer from '../components/Footer';
 import '@styles/Gallery.scss';
 import '@styles/Loading.scss';
@@ -43,7 +43,7 @@ export const Gallery = () => {
         ) : (
           <div className="dogs">
             {dogsData.map((dog) => (
-              <Dog key={dog.id} dog={dog} />
+              <DogInfo key={dog.id} dog={dog} />
             ))}
           </div>
         )}
