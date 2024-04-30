@@ -9,7 +9,7 @@ import { FirebaseError } from 'firebase/app';
 
 export const Login = () => {
   const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const navigate = useNavigate();
   const auth = getAuth();
   const db = getFirestore();
@@ -17,8 +17,8 @@ export const Login = () => {
 
   const register = async () => {
     try {
-      if (email !== '' && password !== '') {
-        const user = await signInWithEmailAndPassword(auth, email, password);
+      if (email !== '' && confirmPassword !== '') {
+        const user = await signInWithEmailAndPassword(auth, email, confirmPassword);
         const userUid = user.user.uid;
         const docRef = doc(db, 'newUsers', userUid);
         const docSnap = await getDoc(docRef);
@@ -75,8 +75,8 @@ export const Login = () => {
             className="inputbox__pw"
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
         <div className="btn">

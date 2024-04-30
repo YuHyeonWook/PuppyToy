@@ -11,6 +11,7 @@ import Dropdown from '../common/Dropdown';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/UserAdd.scss';
 import '../styles/Loading.scss';
+import Loading from '../components/Loading';
 
 export const UserAdd = () => {
   // 한국 기준 CurrentDate 문자열 반환
@@ -131,10 +132,7 @@ export const UserAdd = () => {
           outWork: '-- : -- : --',
           workDate: getCurrentDate(),
         });
-        setTimeout(() => {
-          navigate('/home');
-          setIsLoading(false);
-        }, 2000);
+        navigate('/home');
       } catch (error) {
         console.error('Error adding document: ', error);
         setIsLoading(false);
@@ -200,13 +198,6 @@ export const UserAdd = () => {
             <button className="userAdd--btn">추가</button>
           </div>
         </div>
-        {isLoading && (
-          <div className="spinner">
-            <span className="spinner-inner-1"></span>
-            <span className="spinner-inner-2"></span>
-            <span className="spinner-inner-3"></span>
-          </div>
-        )}
       </form>
     </>
   );
