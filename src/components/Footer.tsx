@@ -2,34 +2,34 @@ import '../styles/Footer.scss';
 import React, { useState } from 'react';
 import { AiOutlineMail, AiOutlineGithub, AiOutlineBold } from 'react-icons/ai';
 
-const Footer = () => {
-  const membersData = [
-    {
-      name: '유현욱',
-      email: 'yho7955@naver.com',
-      github: 'https://github.com/YuHyeonWook',
-      blog: 'https://yho7955.tistory.com/',
-    },
-    {
-      name: '김령태',
-      email: 'rt990122@gmail.com',
-      github: 'https://github.com/catrt',
-      blog: 'https://catrt.tistory.com/',
-    },
-    {
-      name: '김여진',
-      email: 'duwls1503@gmail.com',
-      github: 'https://github.com/Yeojin-Kim12',
-      blog: 'https://velog.io/@duwls1503/posts',
-    },
-    {
-      name: '박수민',
-      email: 'dogcs1289@naver.com',
-      github: 'https://github.com/nakjilove',
-      blog: 'https://blog.naver.com/dogcs1289',
-    },
-  ];
+const membersData = [
+  {
+    name: '유현욱',
+    email: 'yho7955@naver.com',
+    github: 'https://github.com/YuHyeonWook',
+    blog: 'https://yho7955.tistory.com/',
+  },
+  {
+    name: '김령태',
+    email: 'rt990122@gmail.com',
+    github: 'https://github.com/catrt',
+    blog: 'https://catrt.tistory.com/',
+  },
+  {
+    name: '김여진',
+    email: 'duwls1503@gmail.com',
+    github: 'https://github.com/Yeojin-Kim12',
+    blog: 'https://velog.io/@duwls1503/posts',
+  },
+  {
+    name: '박수민',
+    email: 'dogcs1289@naver.com',
+    github: 'https://github.com/nakjilove',
+    blog: 'https://blog.naver.com/dogcs1289',
+  },
+];
 
+const Footer = () => {
   return (
     <footer>
       <div className="inner">
