@@ -120,17 +120,6 @@ export const UserAdd = () => {
         localStorage.setItem('user', JSON.stringify({ id: uid, ...newUser }));
         // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
         setUser({ id: uid, ...newUser });
-        setNewUser({
-          name: '',
-          gender: '',
-          age: 0,
-          breed: '',
-          position: '',
-          imageUrl: '',
-          inWork: '-- : -- : --',
-          outWork: '-- : -- : --',
-          workDate: getCurrentDate(),
-        });
         navigate('/home');
       } catch (error) {
         console.error('Error adding document: ', error);
