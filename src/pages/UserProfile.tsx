@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import Header from '../components/Header';
 import Profile from '../components/Profile';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import Footer from '../components/Footer';
+import { Layout } from '../components/layout/Layout';
 
 export const UserProfile = () => {
   const [userData, setUserData] = useState('');
@@ -47,9 +46,7 @@ export const UserProfile = () => {
 
   return (
     <>
-      <Header />
-      {userData && <Profile userData={userData} />}
-      <Footer />
+      <Layout>{userData && <Profile userData={userData} />}</Layout>
     </>
   );
 };

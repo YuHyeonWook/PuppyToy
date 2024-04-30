@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+import React, { useState } from 'react';
 import WorkspaceList from '../components/WorkspaceList';
 import WorkspaceModal from '../components/WorkspaceModal';
 import Select from 'react-select';
 import '../styles/WorkspaceApplication.scss';
-import Footer from '../components/Footer';
+import { Layout } from '../components/layout/Layout';
 
 export const WorkspaceApplication = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,37 +30,37 @@ export const WorkspaceApplication = () => {
 
   return (
     <>
-      <Header />
-      <div className="topSide">
-        <Select
-          className="select"
-          options={options}
-          placeholder="결석형태"
-          onChange={(e) => {
-            setAttendance(e.value);
-            setSelectOption(e);
-          }}
-          value={selectOption}
-          theme={(theme) => ({
-            ...theme,
-            borderRadius: 10,
-            colors: { ...theme.colors, primary25: '#e9deff', primary: '#c3a3ff' },
-          })}
-        />
-        <button className="registBtn" onClick={() => btnClick()}>
-          신청
-        </button>
-      </div>
-      <WorkspaceList attendance={attendance} onItemClick={handleItemClick} />
-      {isModalOpen && (
-        <WorkspaceModal
-          setIsModalOpen={setIsModalOpen}
-          selectedItem={selectedItem}
-          setSelectedItem={setSelectedItem}
-          isReadonly={isReadonly}
-        />
-      )}
-      <Footer />
+      <Layout>
+        <div className="topSide">
+          <Select
+            className="select"
+            options={options}
+            placeholder="결석형태"
+            onChange={(e) => {
+              setAttendance(e.value);
+              setSelectOption(e);
+            }}
+            value={selectOption}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 10,
+              colors: { ...theme.colors, primary25: '#e9deff', primary: '#c3a3ff' },
+            })}
+          />
+          <button className="registBtn" onClick={() => btnClick()}>
+            신청
+          </button>
+        </div>
+        <WorkspaceList attendance={attendance} onItemClick={handleItemClick} />
+        {isModalOpen && (
+          <WorkspaceModal
+            setIsModalOpen={setIsModalOpen}
+            selectedItem={selectedItem}
+            setSelectedItem={setSelectedItem}
+            isReadonly={isReadonly}
+          />
+        )}
+      </Layout>
     </>
   );
 };

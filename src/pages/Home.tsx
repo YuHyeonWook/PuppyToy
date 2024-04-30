@@ -1,15 +1,14 @@
-import Header from '../components/Header';
 import Timer from '../components/Timer';
 import DogRecommend from '../components/DogRecommend';
-import Footer from '../components/Footer';
+import { Layout } from '../components/layout/Layout';
 
 export const Home = () => {
   return (
     <>
-      <Header />
-      <Timer />
-      <DogRecommend />
-      <Footer />
+      <Layout>
+        <Timer />
+        <DogRecommend />
+      </Layout>
     </>
   );
 };
