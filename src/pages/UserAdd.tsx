@@ -7,7 +7,7 @@ import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/userContext';
-import Dropdown from '../common/Dropdown';
+import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
 import 'react-toastify/dist/ReactToastify.css';
 import '@styles/UserAdd.scss';

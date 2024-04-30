@@ -34,8 +34,8 @@ const WorkspaceList = ({ attendance, onItemClick }) => {
   return (
     <div className="workspace">
       <div className="list">
-        {listData.map((data) => (
-          <div className="list__container" key={data.id} onClick={() => onItemClick(data)}>
+        {listData.map((data, idx) => (
+          <div className="list__container" key={idx} onClick={() => onItemClick(data)}>
             <div className="list__name">{data.name}</div>
             <div className="list__attendance">{data.attendance}</div>
             <div className="list__date">{format(data.date.toDate(), 'yyyy년 MM월 dd일')}</div>
