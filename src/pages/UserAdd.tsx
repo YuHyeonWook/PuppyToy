@@ -100,8 +100,13 @@ export const UserAdd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Object.values(newUser).some((item) => item === '')) {
-      alert('모든 필드를 채워주세요.');
+    const emptyFields = Object.entries(newUser).filter(
+      ([key, value]) => value === '' || value === 0,
+    );
+    if (emptyFields.length > 0) {
+      toast.info(`다음 필드를 채워주세요: ${emptyFields.map(([key]) => key).join(', ')}`, {
+        autoClose: 2000,
+      });
     } else {
       try {
         const auth = getAuth();
