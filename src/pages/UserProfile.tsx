@@ -4,18 +4,10 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { Layout } from '../components/layout/Layout';
+import { getTimeInKorea } from '../lib/utils/getTimeInKorea';
 
 export const UserProfile = () => {
   const [userData, setUserData] = useState('');
-
-  // 한국 기준 Date 객체 반환
-  const getTimeInKorea = () => {
-    const date = new Date();
-    const timeInUtc = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
-    const timeInKorea = new Date(timeInUtc + 9 * 60 * 60 * 1000);
-
-    return timeInKorea;
-  };
 
   useEffect(() => {
     const auth = getAuth();
