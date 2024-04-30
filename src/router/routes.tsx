@@ -9,15 +9,15 @@ import {
   Error,
 } from '../pages';
 import ProtectedRoute from '../pages/ProtectedRoute';
-import PATH from '../lib/const/path';
+import { PATH } from '../lib/const/path';
 
 const routes = [
   {
-    path: '/',
+    path: PATH.LOGIN,
     element: <Login />,
   },
   {
-    path: 'signup',
+    path: PATH.SIGNUP,
     element: (
       <ProtectedRoute>
         <SignUp />,
@@ -25,7 +25,7 @@ const routes = [
     ),
   },
   {
-    path: 'useradd',
+    path: PATH.USER_ADD,
     element: (
       <ProtectedRoute>
         <UserAdd />,
@@ -33,7 +33,7 @@ const routes = [
     ),
   },
   {
-    path: 'home',
+    path: PATH.HOME,
     element: (
       <ProtectedRoute>
         <Home />
@@ -67,7 +67,7 @@ const routes = [
     ],
   },
   {
-    path: '*',
+    path: PATH.ERROR,
     element: (
       <ProtectedRoute>
         <Error />,
