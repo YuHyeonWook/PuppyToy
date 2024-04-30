@@ -30,7 +30,6 @@ export const UserAdd = () => {
 
   const [file, setFile] = useState('');
   const [progress, setProgress] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -104,7 +103,6 @@ export const UserAdd = () => {
     if (Object.values(newUser).some((item) => item === '')) {
       alert('모든 필드를 채워주세요.');
     } else {
-      // setIsLoading(true);
       try {
         const auth = getAuth();
         const uid = auth.currentUser.uid;
@@ -117,7 +115,6 @@ export const UserAdd = () => {
         navigate('/home');
       } catch (error) {
         console.error('Error adding document: ', error);
-        // setIsLoading(false);
         toast.error('Error creating newUser', {
           autoClose: 2000,
         });
