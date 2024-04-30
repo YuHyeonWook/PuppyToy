@@ -8,20 +8,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../components/userContext';
 import Dropdown from '../common/Dropdown';
+import { getCurrentDate } from '../lib/utils/getCurrentDate';
 import 'react-toastify/dist/ReactToastify.css';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
 
-export const UserAdd = () => {
-  // 한국 기준 CurrentDate 문자열 반환
-  const getCurrentDate = () => {
-    const date = new Date();
-    const timeInUtc = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
-    const timeInKorea = new Date(timeInUtc + 9 * 60 * 60 * 1000);
-    const currentDate = timeInKorea.toISOString().split('T')[0];
-    return currentDate;
-  };
+const date = getCurrentDate();
 
+export const UserAdd = () => {
   const [newUser, setNewUser] = useState({
     name: '',
     gender: '',
@@ -31,7 +25,7 @@ export const UserAdd = () => {
     imageUrl: '',
     inWork: '-- : -- : --',
     outWork: '-- : -- : --',
-    workDate: getCurrentDate(),
+    workDate: date,
   });
 
   const [file, setFile] = useState('');
@@ -110,7 +104,7 @@ export const UserAdd = () => {
     if (Object.values(newUser).some((item) => item === '')) {
       alert('모든 필드를 채워주세요.');
     } else {
-      setIsLoading(true);
+      // setIsLoading(true);
       try {
         const auth = getAuth();
         const uid = auth.currentUser.uid;
@@ -123,7 +117,7 @@ export const UserAdd = () => {
         navigate('/home');
       } catch (error) {
         console.error('Error adding document: ', error);
-        setIsLoading(false);
+        // setIsLoading(false);
         toast.error('Error creating newUser', {
           autoClose: 2000,
         });
