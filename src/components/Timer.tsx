@@ -1,5 +1,5 @@
 import '../styles/Time.scss';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
@@ -12,22 +12,22 @@ const Timer = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   // 한국 기준 Date 객체 반환
-  const getTimeInKorea = useCallback(() => {
+  const getTimeInKorea = () => {
     const date = new Date();
     const timeInUtc = date.getTime() + date.getTimezoneOffset() * 60 * 1000;
     const timeInKorea = new Date(timeInUtc + 9 * 60 * 60 * 1000);
 
     return timeInKorea;
-  }, []);
+  };
 
   // Date 객체에서 'HH : MM : SS' 추출해서 반환
-  const getTimeString = useCallback((date) => {
+  const getTimeString = (date) => {
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
     const timeString = hours + ' : ' + minutes + ' : ' + seconds;
     return timeString;
-  }, []);
+  };
 
   // 한국 기준 현재 시간 timer
   useEffect(() => {
@@ -74,6 +74,10 @@ const Timer = () => {
     });
   }, []);
 
+  const handleButtonClick = () => {
+    setModalOpen(true);
+  };
+
   return (
     <section className="time">
       <h3>현재 시각</h3>
@@ -81,7 +85,7 @@ const Timer = () => {
       <button
         className="btn"
         type="button"
-        onClick={() => setModalOpen(true)}
+        onClick={handleButtonClick}
         disabled={inWork && outWork}>
         {inWork ? (outWork ? '하교 완료' : '하교 하기') : '등교 하기'}
       </button>
