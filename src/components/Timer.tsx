@@ -3,9 +3,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import TimeModal from './TimeModal';
+import TimerModal from './TimerModal';
 
-const Time = () => {
+const Timer = () => {
   const [currentTime, setCurrentTime] = useState('-- : -- : --'); // 현재 시간
   const [inWork, setInWork] = useState(false); // 등교 여부
   const [outWork, setOutWork] = useState(false); // 하교 여부
@@ -86,7 +86,7 @@ const Time = () => {
         {inWork ? (outWork ? '하교 완료' : '하교 하기') : '등교 하기'}
       </button>
       {modalOpen && (
-        <TimeModal
+        <TimerModal
           currentTime={currentTime}
           inWork={inWork}
           setInWork={setInWork}
@@ -99,4 +99,4 @@ const Time = () => {
   );
 };
 
-export default Time;
+export default Timer;
