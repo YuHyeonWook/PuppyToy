@@ -32,10 +32,11 @@ export const UserAdd = () => {
   const [progress, setProgress] = useState(0);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  // const [isUploading, setIsUploading] = useState(false);
+  const [isUploaded, setIsUploaded] = useState(false);
 
   const handleUpload = () => {
     if (file) {
+      setIsUploaded(true);
       uploadFile();
     }
   };
@@ -55,6 +56,7 @@ export const UserAdd = () => {
         updateUploadProgress(snapshot);
       },
       (error) => {
+        setIsUploaded(false);
         console.log(error);
       },
       () => {
@@ -89,6 +91,7 @@ export const UserAdd = () => {
     toast.info('이미지 업로드 성공!!', {
       autoClose: 2000,
     });
+    setIsUploaded(false);
     setNewUser((prev) => ({ ...prev, imageUrl: downloadUrl }));
   };
 
@@ -152,7 +155,9 @@ export const UserAdd = () => {
             )}
           </label>
           <input id="file-upload" type="file" onChange={handleFileUpload} />
-          <button onClick={handleUpload}>업로드</button>
+          <button onClick={handleUpload} disabled={isUploaded}>
+            업로드
+          </button>
           <input
             className="userAdd__input"
             type="text"
