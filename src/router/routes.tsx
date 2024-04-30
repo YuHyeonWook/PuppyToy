@@ -39,33 +39,32 @@ const routes = [
         <Home />
       </ProtectedRoute>
     ),
-    children: [
-      {
-        path: 'userprofile',
-        element: (
-          <ProtectedRoute>
-            <UserProfile />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'workspaceapplication',
-        element: (
-          <ProtectedRoute>
-            <WorkspaceApplication />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: 'gallery',
-        element: (
-          <ProtectedRoute>
-            <Gallery />,
-          </ProtectedRoute>
-        ),
-      },
-    ],
   },
+  {
+    path: PATH.USER_PROFILE,
+    element: (
+      <ProtectedRoute>
+        <UserProfile />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: PATH.WORKSPACE_APPLICATION,
+    element: (
+      <ProtectedRoute>
+        <WorkspaceApplication />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: PATH.GALLERY,
+    element: (
+      <ProtectedRoute>
+        <Gallery />
+      </ProtectedRoute>
+    ),
+  },
+
   {
     path: PATH.ERROR,
     element: (

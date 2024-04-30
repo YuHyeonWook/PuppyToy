@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../components/Header';
-import '../styles/Gallery.scss';
-import '../styles/Loading.scss';
 import Dog from '../components/Dog';
 import Footer from '../components/Footer';
+import '@styles/Gallery.scss';
+import '@styles/Loading.scss';
+import Loading from '../components/Loading';
 
 export const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);
@@ -38,11 +39,7 @@ export const Gallery = () => {
       <Header />
       <div className="gallery" style={{ height: `${isLoading ? '80vh' : 'auto'}` }}>
         {isLoading ? (
-          <div className="spinner">
-            <span className="spinner-inner-1"></span>
-            <span className="spinner-inner-2"></span>
-            <span className="spinner-inner-3"></span>
-          </div>
+          <Loading />
         ) : (
           <div className="dogs">
             {dogsData.map((dog) => (
