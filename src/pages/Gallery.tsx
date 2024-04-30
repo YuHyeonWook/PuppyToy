@@ -37,7 +37,7 @@ export const Gallery = () => {
   return (
     <>
       <Header />
-      <div className="gallery" style={{ height: `${isLoading ? '80vh' : 'auto'}` }}>
+      <div className={`gallery ${isLoading ? 'loading' : 'loaded'}`}>
         {isLoading ? (
           <Loading />
         ) : (
