@@ -9,7 +9,6 @@ import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../context/userContext';
 import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
-import { UserType } from '../types/UserTypes';
 import 'react-toastify/dist/ReactToastify.css';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
@@ -26,7 +25,7 @@ export const UserAdd = () => {
     imageUrl: '',
     inWork: '-- : -- : --',
     outWork: '-- : -- : --',
-    workDate: '',
+    workDate: date,
   });
   const [file, setFile] = useState<string>('');
   const [progress, setProgress] = useState<number>(0);

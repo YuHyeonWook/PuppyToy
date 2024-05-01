@@ -4,7 +4,7 @@ export interface UserType {
   name: string;
   age: number;
   breed: string;
-  gender: '';
+  gender: string;
   id: string;
   imageUrl: string;
   inWork: string;
