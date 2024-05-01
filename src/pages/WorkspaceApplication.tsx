@@ -7,9 +7,10 @@ import { Layout } from '../components/layout/Layout';
 
 export const WorkspaceApplication = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [attendance, setAttendance] = useState('');
+  const [attendance, setAttendance] = useState([]);
   const [selectOption, setSelectOption] = useState('');
   const options = [
+    { value: '모든 결석형태', label: '모든 결석형태' },
     { value: '외출', label: '외출' },
     { value: '조퇴', label: '조퇴' },
     { value: '결석', label: '결석' },
@@ -28,6 +29,7 @@ export const WorkspaceApplication = () => {
     setIsReadonly(true);
   };
 
+  console.log(attendance);
   return (
     <>
       <Layout>
@@ -37,7 +39,11 @@ export const WorkspaceApplication = () => {
             options={options}
             placeholder="결석형태"
             onChange={(e) => {
-              setAttendance(e.value);
+              if (e.value === '모든 결석형태') {
+                setAttendance(['외출', '조퇴', '결석']);
+              } else {
+                setAttendance([e.value]);
+              }
               setSelectOption(e);
             }}
             value={selectOption}

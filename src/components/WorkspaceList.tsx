@@ -8,26 +8,17 @@ const WorkspaceList = ({ attendance, onItemClick }) => {
   const [listData, setListData] = useState([]);
 
   useEffect(() => {
-    let unsub, q;
     //오늘 날짜 포함, new Date()를 하면 시간 때문에 오늘 날짜임에도 보이지 않음
     const today = new Date();
     const todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-    if (attendance) {
-      q = query(
-        collection(db, 'absent'),
-        where('attendance', '==', attendance),
-        where('date', '>=', Timestamp.fromDate(todayDate)),
-      );
-      unsub = onSnapshot(q, (doc) => {
-        setListData(doc.docs.map((document) => document.data()));
-      });
-    } else {
-      q = query(collection(db, 'absent'), where('date', '>=', Timestamp.fromDate(todayDate)));
-      unsub = onSnapshot(q, (doc) => {
-        setListData(doc.docs.map((document) => document.data()));
-      });
-    }
+    const q = query(collection(db, 'absent'), where('date', '>=', Timestamp.fromDate(todayDate)));
+    const unsub = onSnapshot(q, (doc) => {
+      let data = doc.docs.map((document) => document.data());
+      if (attendance.length > 0) {
+        data = data.filter((item) => attendance.includes(item.attendance));
+      }
+      setListData(data);
+    });
     return () => unsub();
   }, [db, attendance]);
 
