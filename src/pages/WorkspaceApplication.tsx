@@ -53,7 +53,7 @@ export const WorkspaceApplication = () => {
               colors: { ...theme.colors, primary25: '#e9deff', primary: '#c3a3ff' },
             })}
           />
-          <button className="registBtn" onClick={() => btnClick()}>
+          <button className="registBtn" onClick={btnClick}>
             신청
           </button>
         </div>
