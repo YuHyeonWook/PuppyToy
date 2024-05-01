@@ -1,4 +1,4 @@
-import { UserContext } from './components/userContext';
+import { UserContext } from './context/userContext';
 import { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';

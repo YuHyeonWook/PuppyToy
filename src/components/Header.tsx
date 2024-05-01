@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from './userContext';
+import { UserContext } from '../context/userContext';
 import logo from '../assets/logo/HeaderLogo.png';
 import '@styles/Header.scss';
 import SingOut from './SingOut';
