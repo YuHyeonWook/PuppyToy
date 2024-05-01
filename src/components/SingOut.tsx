@@ -24,8 +24,8 @@ const SingOut = () => {
   };
 
   return (
-    <button className="logoutbtn" onClick={logOutClick}>
-      Log Out
+    <button className="logout--btn" onClick={logOutClick}>
+      로그아웃
     </button>
   );
 };

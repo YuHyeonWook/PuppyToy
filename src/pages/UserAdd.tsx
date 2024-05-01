@@ -149,13 +149,15 @@ export const UserAdd = () => {
         <div className="user__container">
           <label htmlFor="file-upload" className="customFile--upload">
             {newUser.imageUrl ? (
-              <img src={newUser.imageUrl} alt="newUser" width={100} height={100} />
+              <img src={newUser.imageUrl} alt="newUser" className="user--image" />
             ) : (
-              <LuDog size={60} />
+              <div className="icon-container">
+                <LuDog />
+              </div>
             )}
           </label>
           <input id="file-upload" type="file" onChange={handleFileUpload} />
-          <button onClick={handleUpload} disabled={isUploaded}>
+          <button className="upload--btn" onClick={handleUpload} disabled={isUploaded}>
             업로드
           </button>
           <input

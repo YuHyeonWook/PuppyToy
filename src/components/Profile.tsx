@@ -20,66 +20,42 @@ const Profile = ({ userData }) => {
         <main>
           <div className="user-profile__breed">
             <p className="key">
-              <FaDog
-                style={{
-                  color: '#000',
-                }}
-              />
+              <FaDog />
               {'품종'}
             </p>
             <p className="value">{userData.breed}</p>
           </div>
           <div className="user-profile__gender">
             <p className="key">
-              <ImManWoman
-                style={{
-                  color: '#000',
-                }}
-              />
+              <ImManWoman />
               {'성별'}
             </p>
             <p className="value">{userData.gender}</p>
           </div>
           <div className="user-profile__age">
             <p className="key">
-              <FaBone
-                style={{
-                  color: '#000',
-                }}
-              />
+              <FaBone />
               {'나이'}
             </p>
             <p className="value">{userData.age}살</p>
           </div>
           <div className="user-profile__position">
             <p className="key">
-              <FaBookReader
-                style={{
-                  color: '#000',
-                }}
-              />
+              <FaBookReader />
               {'직책'}
             </p>
             <p className="value">{userData.position}</p>
           </div>
           <div className="user-profile__in-work">
             <p className="key">
-              <FaRegClock
-                style={{
-                  color: '#000',
-                }}
-              />
+              <FaRegClock />
               {'등교 시간'}
             </p>
             <p className="value">{userData.inWork}</p>
           </div>
           <div className="user-profile__out-work">
             <p className="key">
-              <FaClock
-                style={{
-                  color: '#000',
-                }}
-              />
+              <FaClock />
               {'하교 시간'}
             </p>
             <p className="value">{userData.outWork}</p>
