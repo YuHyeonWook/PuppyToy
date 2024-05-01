@@ -9,6 +9,7 @@ import { LuDog } from 'react-icons/lu';
 import { UserContext } from '../context/userContext';
 import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
+import { UserType } from '../types/UserTypes';
 import 'react-toastify/dist/ReactToastify.css';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
@@ -25,14 +26,13 @@ export const UserAdd = () => {
     imageUrl: '',
     inWork: '-- : -- : --',
     outWork: '-- : -- : --',
-    workDate: date,
+    workDate: '',
   });
-
-  const [file, setFile] = useState('');
-  const [progress, setProgress] = useState(0);
+  const [file, setFile] = useState<string>('');
+  const [progress, setProgress] = useState<number>(0);
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
-  const [isUploaded, setIsUploaded] = useState(false);
+  const [isUploaded, setIsUploaded] = useState<boolean>(false);
 
   const handleUpload = () => {
     if (file) {

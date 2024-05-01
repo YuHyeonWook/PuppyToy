@@ -9,7 +9,7 @@ import {
   Error,
 } from '../pages';
 import ProtectedRoute from '../pages/ProtectedRoute';
-import { PATH } from '../lib/const/path';
+import { PATH } from '../lib/constants/path';
 
 const routes = [
   {
