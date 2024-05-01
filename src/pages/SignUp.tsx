@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/Login.scss';
+import '@styles/Login.scss';
 import { FirebaseError } from 'firebase/app';
 
 export const SignUp = () => {

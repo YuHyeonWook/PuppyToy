@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { getFirestore, collection, query, where, onSnapshot, Timestamp } from 'firebase/firestore';
-import '../styles/WorkspaceApplication.scss';
+import '@styles/WorkspaceApplication.scss';
 
 const WorkspaceList = ({ attendance, onItemClick }) => {
   const db = getFirestore();

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import DogInfo from '../components/DogInfo';
-import '@styles/Gallery.scss';
-import '@styles/Loading.scss';
 import Loading from '../components/common/Loading';
 import { fetchDogs } from '../api/fetchDogs';
 import { Layout } from '../components/layout/Layout';
+import '@styles/Gallery.scss';
+import '@styles/Loading.scss';
 
 export const Gallery = () => {
   const [dogsData, setDogsData] = useState([]);

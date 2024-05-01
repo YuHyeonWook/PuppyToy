@@ -1,5 +1,5 @@
-import '@styles/Footer.scss';
 import { AiOutlineMail, AiOutlineGithub, AiOutlineBold } from 'react-icons/ai';
+import '@styles/Footer.scss';
 
 const membersData = [
   {

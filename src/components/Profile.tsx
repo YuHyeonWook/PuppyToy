@@ -1,8 +1,7 @@
-import '../styles/Profile.scss';
-import React from 'react';
 import { FaDog, FaBone, FaBookReader, FaRegClock, FaClock } from 'react-icons/fa';
 import { ImManWoman } from 'react-icons/im';
 import userProfileBackgroundImage from '../assets/user_profile_background_image.jpg';
+import '@styles/Profile.scss';
 
 const Profile = ({ userData }) => {
   return (

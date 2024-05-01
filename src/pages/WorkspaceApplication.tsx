@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import WorkspaceList from '../components/WorkspaceList';
 import WorkspaceModal from '../components/WorkspaceModal';
 import Select from 'react-select';
-import '../styles/WorkspaceApplication.scss';
 import { Layout } from '../components/layout/Layout';
+import '@styles/WorkspaceApplication.scss';
 
 export const WorkspaceApplication = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

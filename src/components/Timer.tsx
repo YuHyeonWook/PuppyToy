@@ -1,9 +1,9 @@
-import '../styles/Time.scss';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { db } from '../firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import TimerModal from './TimerModal';
+import '@styles/Time.scss';
 
 const Timer = () => {
   const [currentTime, setCurrentTime] = useState('-- : -- : --'); // 현재 시간
