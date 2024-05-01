@@ -1,28 +1,24 @@
 import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
-import '@styles/Login.scss';
 import { FirebaseError } from 'firebase/app';
+import '@styles/Login.scss';
 
 export const SignUp = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setconfirmPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
   const navigate = useNavigate();
   const auth = getAuth();
 
   const register = async () => {
     try {
       if (email === '' || password === '' || confirmPassword === '') {
-        alert('전부 입력해주세요.');
+        setError('전부 입력해주세요.');
       } else if (password !== confirmPassword) {
-        alert('비밀번호가 일치하지 않습니다.');
-      } else if (
-        email !== '' &&
-        password !== '' &&
-        confirmPassword !== '' &&
-        password === confirmPassword
-      ) {
+        setError('비밀번호가 일치하지 않습니다.');
+      } else {
         await createUserWithEmailAndPassword(auth, email, password);
         alert('회원가입이 완료되었습니다.');
         navigate('/');
@@ -30,14 +26,14 @@ export const SignUp = () => {
     } catch (error) {
       if (error instanceof FirebaseError) {
         if (error.code === 'auth/invalid-email') {
-          alert('이메일 형식이 틀립니다.');
+          setError('이메일 형식이 틀립니다.');
+        } else if (error.code === 'auth/email-already-in-use') {
+          setError('해당 이메일은 사용중입니다.');
+        } else if (error.code === 'auth/weak-password') {
+          setError('6자 이상의 비밀번호를 입력해주세요.');
         }
-        if (error.code === 'auth/email-already-exists') {
-          alert('해당 이메일은 사용중입니다.');
-        }
-        if (error.code === 'auth/weak-password') {
-          alert('6자 이상의 비밀번호를 입력해주세요.');
-        }
+      } else {
+        setError('회원가입 중 오류가 발생했습니다. 다시 시도해주세요.');
       }
     }
   };
@@ -54,6 +50,7 @@ export const SignUp = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+
           <input
             className="inputbox__pw"
             type="password"
@@ -69,11 +66,11 @@ export const SignUp = () => {
             onChange={(e) => setconfirmPassword(e.target.value)}
           />
         </div>
+        {error && <div className="error-message">{error}</div>}
         <div className="btn">
           <button className="btn__first" onClick={register}>
             Sign up
           </button>
-          <div></div>
           <Link className="btn__second" to="/">
             Login
           </Link>
