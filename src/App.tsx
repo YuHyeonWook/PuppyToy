@@ -1,14 +1,14 @@
-import { UserContext } from './context/userContext';
 import { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { UserType } from './types/UserTypes';
 import routes from './router/routes';
+import UserProvider from './context/UserProvider';
 import './App.scss';
 
 const router = createBrowserRouter(routes);
 
 const App = () => {
-  const [user, setUser] = useState({});
+  const [, setUser] = useState({});
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -19,9 +19,9 @@ const App = () => {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserProvider>
         <RouterProvider router={router} />
-      </UserContext.Provider>
+      </UserProvider>
     </>
   );
 };

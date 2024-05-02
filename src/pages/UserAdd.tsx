@@ -1,4 +1,4 @@
-import { useState, useContext, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
@@ -6,12 +6,12 @@ import { db, storage } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import { LuDog } from 'react-icons/lu';
-import { UserContext } from '../context/userContext';
 import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
 import 'react-toastify/dist/ReactToastify.css';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
+import useUserState from '../lib/hooks/useUserState';
 
 const date = getCurrentDate();
 
@@ -29,7 +29,7 @@ export const UserAdd = () => {
   });
   const [file, setFile] = useState<string>('');
   const [progress, setProgress] = useState<number>(0);
-  const { setUser } = useContext(UserContext);
+  const { setUserState } = useUserState();
   const navigate = useNavigate();
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
 
@@ -126,7 +126,7 @@ export const UserAdd = () => {
         // localStorage에 유저 데이터 저장
         localStorage.setItem('user', JSON.stringify({ id: uid, ...newUser }));
         // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
-        setUser({ id: uid, ...newUser });
+        setUserState({ id: uid, ...newUser });
         navigate('/home');
       } catch (error) {
         console.error('Error adding document: ', error);

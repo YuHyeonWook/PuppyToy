@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/userContext';
 import logo from '../assets/logo/HeaderLogo.png';
 import SingOut from './SingOut';
+import useUserState from '../lib/hooks/useUserState';
 import '@styles/Header.scss';
 
 const Header = () => {
-  const { user } = useContext(UserContext); // UserContext의 값을 가져옴
+  const { userState } = useUserState(); // UserContext의 값을 가져옴
   const navigate = useNavigate();
 
   return (
@@ -32,10 +31,10 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            {user && (
+            {userState && (
               <div className="user--info" onClick={() => navigate('/userprofile')}>
-                <img src={user.imageUrl} />
-                <span>{user.name}님</span>
+                <img src={userState.imageUrl} />
+                <span>{userState.name}님</span>
               </div>
             )}
           </li>
