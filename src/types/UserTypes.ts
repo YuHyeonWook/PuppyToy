@@ -13,7 +13,4 @@ export interface UserType {
   workDate: string;
 }
 
-export interface UserContextType {
-  user: UserType;
-  setUser: Dispatch<SetStateAction<UserType>>;
-}
+export interface UserContextType {}

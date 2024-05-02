@@ -5,22 +5,10 @@ import { UserType } from './types/UserTypes';
 import routes from './router/routes';
 import './App.scss';
 
-const initialUser: UserType = {
-  age: 0,
-  breed: '',
-  gender: '',
-  id: '',
-  imageUrl: '',
-  inWork: '',
-  name: '',
-  outWork: '',
-  position: '',
-  workDate: '',
-};
 const router = createBrowserRouter(routes);
 
 const App = () => {
-  const [user, setUser] = useState<UserType>(initialUser);
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
