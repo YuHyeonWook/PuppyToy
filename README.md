@@ -1,6 +1,4 @@
-# 강아지 유치원 관리 서비스
 
-## 프로젝트 Info
 
 🔗 프로젝트 URL : **[DEMO](https://dog-management-service.vercel.app/)**
 
