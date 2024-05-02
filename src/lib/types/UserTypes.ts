@@ -12,3 +12,7 @@ export interface UserType {
 }
 
 export interface UserContextType {}
+
+export interface DogType {
+  id: string;
+}

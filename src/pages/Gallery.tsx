@@ -5,9 +5,10 @@ import { fetchDogs } from '../api/fetchDogs';
 import { Layout } from '../components/layout/Layout';
 import '@styles/Gallery.scss';
 import '@styles/Loading.scss';
+import { DogType } from 'src/lib/types/UserTypes';
 
 export const Gallery = () => {
-  const [dogsData, setDogsData] = useState([]);
+  const [dogsData, setDogsData] = useState<DogType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
