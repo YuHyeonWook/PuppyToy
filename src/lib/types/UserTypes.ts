@@ -16,3 +16,14 @@ export interface UserContextType {}
 export interface DogType {
   id: string;
 }
+
+export interface FileType {
+  name: string;
+}
+
+export enum UploadStatusType {
+  PAUSED = 'paused',
+  RUNNING = 'running',
+  SUCCESS = 'success',
+  ERROR = 'error',
+}

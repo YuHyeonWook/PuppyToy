@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytesResumable, getDownloadURL, UploadTaskSnapshot } from 'firebase/storage';
 import { db, storage } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,10 +12,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
 import useUserState from '../lib/hooks/useUserState';
+import { FileType, UploadStatusType } from '../lib/types/UserTypes';
 
 const date = getCurrentDate();
 
-export const UserAdd = () => {
+export const UserAdd: React.FC = () => {
   const [newUser, setNewUser] = useState({
     name: '',
     gender: '',
@@ -27,11 +28,12 @@ export const UserAdd = () => {
     outWork: '-- : -- : --',
     workDate: date,
   });
-  const [file, setFile] = useState<string>('');
+  const [file, setFile] = useState<FileType>({ name: '' });
   const [progress, setProgress] = useState<number>(0);
   const { setUserState } = useUserState();
   const navigate = useNavigate();
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
+  console.log(file);
 
   const handleUpload = () => {
     if (file) {
@@ -66,53 +68,57 @@ export const UserAdd = () => {
     );
   };
 
-  const updateUploadProgress = (snapshot) => {
+  const updateUploadProgress = (snapshot: UploadTaskSnapshot) => {
     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
     console.log('Upload is ' + progress + '% done');
     setProgress(progress);
     updateUploadStatus(snapshot.state);
   };
 
-  const updateUploadStatus = (state) => {
+  const updateUploadStatus = (state: UploadStatusType) => {
     switch (state) {
-      case 'paused':
+      case UploadStatusType.PAUSED:
         console.log('Upload is paused');
         break;
-      case 'running':
+      case UploadStatusType.RUNNING:
         console.log('Upload is running');
+        break;
+      case UploadStatusType.SUCCESS:
+        console.log('Upload is success');
         break;
       default:
         break;
     }
   };
 
-  const onUploadSuccess = (downloadUrl) => {
+  const onUploadSuccess = (downloadUrl: string) => {
     toast.info('이미지 업로드 성공!!', {
       autoClose: 2000,
     });
     setIsUploaded(false);
+    console.log(downloadUrl);
     setNewUser((prev) => ({ ...prev, imageUrl: downloadUrl }));
   };
 
-  const handleFileUpload = (e) => {
-    const file = e.target.files[0];
-    setFile(file);
-    if (file) {
-      toast.info('이미지 등록완료!! 업로드 버튼을 누르시오', {
-        autoClose: 2000,
-      });
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      setFile(file);
+      if (file) {
+        toast.info('이미지 등록완료!! 업로드 버튼을 누르시오', {
+          autoClose: 2000,
+        });
+      }
     }
   };
 
-  const handleChange = (e) => {
-    setNewUser((prevUser) => ({ ...prevUser, [e.target.name]: e.target.value }));
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewUser((prevUser) => ({ ...prevUser, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const emptyFields = Object.entries(newUser).filter(
-      ([key, value]) => value === '' || value === 0,
-    );
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const emptyFields = Object.entries(newUser).filter(([_, value]) => value === '' || value === 0);
     if (emptyFields.length > 0) {
       toast.info(`다음 필드를 채워주세요: ${emptyFields.map(([key]) => key).join(', ')}`, {
         autoClose: 2000,
@@ -120,14 +126,16 @@ export const UserAdd = () => {
     } else {
       try {
         const auth = getAuth();
-        const uid = auth.currentUser.uid;
-        // Firebase에 유저 데이터 저장
-        await setDoc(doc(db, 'newUsers', uid), newUser);
-        // localStorage에 유저 데이터 저장
-        localStorage.setItem('user', JSON.stringify({ id: uid, ...newUser }));
-        // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
-        setUserState({ id: uid, ...newUser });
-        navigate('/home');
+        if (auth.currentUser) {
+          const uid = auth.currentUser.uid;
+          // Firebase에 유저 데이터 저장
+          await setDoc(doc(db, 'newUsers', uid), newUser);
+          // localStorage에 유저 데이터 저장
+          localStorage.setItem('user', JSON.stringify({ id: uid, ...newUser }));
+          // 저장된 유저 데이터를 App 컴포넌트의 전역 상태에 저장
+          setUserState({ id: uid, ...newUser });
+          navigate('/home');
+        }
       } catch (error) {
         console.error('Error adding document: ', error);
         toast.error('Error creating newUser', {
@@ -137,7 +145,7 @@ export const UserAdd = () => {
     }
   };
 
-  const handleDropdownValueUpdate = (name) => (value) => {
+  const handleDropdownValueUpdate = (name: string) => (value: string) => {
     setNewUser((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -193,9 +201,9 @@ export const UserAdd = () => {
             onValueChange={handleDropdownValueUpdate('position')}
             placeholder={'직책'}
           />
-          <div className="btn__container" type="submit" disabled={progress !== 100}>
-            <button className="userAdd--btn">추가</button>
-          </div>
+          <button className="userAdd--btn" type="submit" disabled={progress !== 100}>
+            추가
+          </button>
         </div>
       </form>
     </>
