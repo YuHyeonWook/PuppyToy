@@ -30,8 +30,13 @@ $useradd-btn-hover: #b61a4e;
 
     .customFile--upload {
       margin-top: 30px;
-      img {
-        border-radius: 50%;
+      .user--image {
+        border-radius: 30%;
+        width: 100px;
+        height: 100px;
+      }
+      .icon-container {
+        font-size: 60px;
       }
     }
 

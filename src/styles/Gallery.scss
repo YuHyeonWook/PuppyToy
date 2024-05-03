@@ -22,6 +22,13 @@
   }
 }
 
+.gallery.loading {
+  height: 80vh;
+}
+.gallery.loaded {
+  height: auto;
+}
+
 @media (max-width: 400px) {
   .gallery {
     padding: 0 30px;
