@@ -16,7 +16,7 @@ import { FileType, UploadStatusType } from '../lib/types/UserTypes';
 
 const date = getCurrentDate();
 
-export const UserAdd: React.FC = () => {
+export const UserAdd = () => {
   const [newUser, setNewUser] = useState({
     name: '',
     gender: '',
