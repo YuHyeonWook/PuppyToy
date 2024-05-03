@@ -1,8 +1,9 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { ProtectedRouteProps } from '../lib/types/PropsTypes';
 
-const ProtectedRoute = ({ children }: any) => {
+const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const auth = getAuth();
   const navigate = useNavigate();
   const location = useLocation();
