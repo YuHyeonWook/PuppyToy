@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DogInfo from './DogInfo';
 import Loading from './common/Loading';
 import { fetchDogs } from '../api/fetchDogs';

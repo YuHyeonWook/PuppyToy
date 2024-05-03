@@ -1,8 +1,8 @@
 import { getAuth, signOut } from 'firebase/auth';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
-import '../styles/SingOut.scss';
+import '@styles/SingOut.scss';
 
 const SingOut = () => {
   const navigate = useNavigate();

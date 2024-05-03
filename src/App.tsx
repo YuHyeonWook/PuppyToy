@@ -1,27 +1,13 @@
-import { UserContext } from './context/userContext';
 import { useEffect, useState } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { getAuth } from 'firebase/auth';
-import { User } from './types/UserTypes';
 import routes from './router/routes';
+import UserProvider from './context/UserProvider';
 import './App.scss';
 
-const initialUser: User = {
-  age: 0,
-  breed: '',
-  gender: '',
-  id: '',
-  imageUrl: '',
-  inWork: '',
-  name: '',
-  outWork: '',
-  position: '',
-  workDate: '',
-};
 const router = createBrowserRouter(routes);
 
 const App = () => {
-  const [user, setUser] = useState<User | null>(initialUser);
+  const [, setUser] = useState({});
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -32,9 +18,9 @@ const App = () => {
 
   return (
     <>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserProvider>
         <RouterProvider router={router} />
-      </UserContext.Provider>
+      </UserProvider>
     </>
   );
 };

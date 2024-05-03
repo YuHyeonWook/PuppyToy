@@ -1,7 +1,7 @@
-import '../styles/TimeModal.scss';
 import { db } from '../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import '@styles/TimeModal.scss';
 
 const TimerModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setModalOpen }) => {
   // 등하교 버튼 클릭 시 workTime 수정 및 inWork, outWork 변경

@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import '../styles/WorkspaceModal.scss';
+import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 import ko from 'date-fns/locale/ko';
 import Select from 'react-select';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import { IoMdClose } from 'react-icons/io';
-
 import 'react-datepicker/dist/react-datepicker.css';
+import '@styles/WorkspaceModal.scss';
 
 const WorkspaceModal = ({ setIsModalOpen, selectedItem, setSelectedItem, isReadonly }) => {
   const [schedule, setSchedule] = useState(new Date());
