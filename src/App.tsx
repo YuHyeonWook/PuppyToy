@@ -7,12 +7,12 @@ import './App.scss';
 const router = createBrowserRouter(routes);
 
 const App = () => {
-  const [, setUser] = useState({});
+  const [userState, setUserState] = useState({});
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      setUserState(JSON.parse(storedUser));
     }
   }, []);
 

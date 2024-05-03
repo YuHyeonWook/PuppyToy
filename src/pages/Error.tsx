@@ -1,5 +1,4 @@
 import '@styles/NotFound.scss';
-import { Layout } from '../components/layout/Layout';
 
 export const Error = () => {
   return (

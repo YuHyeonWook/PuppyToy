@@ -3,9 +3,9 @@ import DogInfo from '../components/DogInfo';
 import Loading from '../components/common/Loading';
 import { fetchDogs } from '../api/fetchDogs';
 import { Layout } from '../components/layout/Layout';
+import { DogType } from 'src/lib/types/UserTypes';
 import '@styles/Gallery.scss';
 import '@styles/Loading.scss';
-import { DogType } from 'src/lib/types/UserTypes';
 
 export const Gallery = () => {
   const [dogsData, setDogsData] = useState<DogType[]>([]);

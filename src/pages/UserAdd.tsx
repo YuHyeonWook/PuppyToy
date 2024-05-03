@@ -9,10 +9,10 @@ import { LuDog } from 'react-icons/lu';
 import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
 import 'react-toastify/dist/ReactToastify.css';
-import '@styles/UserAdd.scss';
-import '@styles/Loading.scss';
 import useUserState from '../lib/hooks/useUserState';
 import { FileType, UploadStatusType } from '../lib/types/UserTypes';
+import '@styles/UserAdd.scss';
+import '@styles/Loading.scss';
 
 const date = getCurrentDate();
 
@@ -33,7 +33,6 @@ export const UserAdd = () => {
   const { setUserState } = useUserState();
   const navigate = useNavigate();
   const [isUploaded, setIsUploaded] = useState<boolean>(false);
-  console.log(file);
 
   const handleUpload = () => {
     if (file) {
