@@ -8,15 +8,6 @@ import { useUserState } from './lib/hooks/useUserState';
 const router = createBrowserRouter(routes);
 
 const App = () => {
-  // const { setUserState } = useUserState();
-
-  // useEffect(() => {
-  //   const storedUser = localStorage.getItem('user');
-  //   if (storedUser) {
-  //     setUserState(JSON.parse(storedUser));
-  //   }
-  // }, [setUserState]);
-
   return (
     <>
       <UserProvider>
