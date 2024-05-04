@@ -7,7 +7,7 @@ import { Layout } from '../components/layout/Layout';
 import { getTimeInKorea } from '../lib/utils/getTimeInKorea';
 
 export const UserProfile = () => {
-  const [userData, setUserData] = useState('');
+  const [userData, setUserData] = useState<string>('');
 
   useEffect(() => {
     const auth = getAuth();

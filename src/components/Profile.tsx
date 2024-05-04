@@ -2,8 +2,9 @@ import { FaDog, FaBone, FaBookReader, FaRegClock, FaClock } from 'react-icons/fa
 import { ImManWoman } from 'react-icons/im';
 import userProfileBackgroundImage from '../assets/user_profile_background_image.jpg';
 import '@styles/Profile.scss';
+import { UserType } from '../lib/types/UserTypes';
 
-const Profile = ({ userData }) => {
+const Profile: React.FC<{ userData: UserType }> = ({ userData }) => {
   return (
     <div className="user-profile">
       <div className="inner">

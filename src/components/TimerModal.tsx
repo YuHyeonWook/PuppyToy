@@ -3,7 +3,23 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import '@styles/TimeModal.scss';
 
-const TimerModal = ({ currentTime, inWork, setInWork, outWork, setOutWork, setModalOpen }) => {
+type TimerModalProps = {
+  currentTime: string;
+  inWork: boolean;
+  setInWork: React.Dispatch<React.SetStateAction<boolean>>;
+  outWork: boolean;
+  setOutWork: React.Dispatch<React.SetStateAction<boolean>>;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const TimerModal = ({
+  currentTime,
+  inWork,
+  setInWork,
+  outWork,
+  setOutWork,
+  setModalOpen,
+}: TimerModalProps) => {
   // 등하교 버튼 클릭 시 workTime 수정 및 inWork, outWork 변경
   const handleWorkTime = () => {
     const auth = getAuth();

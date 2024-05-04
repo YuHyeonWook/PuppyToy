@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import DogInfo from './DogInfo';
 import Loading from './common/Loading';
 import { fetchDogs } from '../api/fetchDogs';
+import { DogType } from '../lib/types/DogType';
 import '@styles/DogRecommend.scss';
 
 const DogRecommend = () => {
-  const [dogsData, setDogsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [dogsData, setDogsData] = useState<DogType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getDogs = async () => {

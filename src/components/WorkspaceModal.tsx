@@ -8,9 +8,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import '@styles/WorkspaceModal.scss';
 
 const WorkspaceModal = ({ setIsModalOpen, selectedItem, setSelectedItem, isReadonly }) => {
-  const [schedule, setSchedule] = useState(new Date());
-  const [reason, setReason] = useState('');
-  const [attendance, setAttendance] = useState('');
+  const [schedule, setSchedule] = useState<Date>(new Date());
+  const [reason, setReason] = useState<string>('');
+  const [attendance, setAttendance] = useState<string>('');
   const [selectOption, setSelectOption] = useState('');
   const [userName, setUserName] = useState('');
 
@@ -52,7 +52,7 @@ const WorkspaceModal = ({ setIsModalOpen, selectedItem, setSelectedItem, isReado
       } else {
         alert('모두 입력해주세요.');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.code);
       console.log(error.message);
     }

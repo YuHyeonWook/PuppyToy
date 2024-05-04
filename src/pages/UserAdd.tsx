@@ -10,14 +10,15 @@ import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
 import 'react-toastify/dist/ReactToastify.css';
 import useUserState from '../lib/hooks/useUserState';
-import { FileType, UploadStatusType } from '../lib/types/UserTypes';
+import { FileType, UploadStatusType, UserType } from '../lib/types/UserTypes';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
 
 const date = getCurrentDate();
 
 export const UserAdd = () => {
-  const [newUser, setNewUser] = useState({
+  const [newUser, setNewUser] = useState<UserType>({
+    id: '',
     name: '',
     gender: '',
     age: 0,
@@ -28,6 +29,7 @@ export const UserAdd = () => {
     outWork: '-- : -- : --',
     workDate: date,
   });
+
   const [file, setFile] = useState<FileType>({ name: '' });
   const [progress, setProgress] = useState<number>(0);
   const { setUserState } = useUserState();

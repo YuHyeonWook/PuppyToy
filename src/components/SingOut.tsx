@@ -15,7 +15,7 @@ const SingOut = () => {
       setUserState('');
       alert('로그아웃 되었습니다.');
       navigate('/');
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.code);
       console.log(error.message);
       alert('로그아웃에 실패했습니다.');

@@ -13,11 +13,10 @@ const options = [
 ];
 
 export const WorkspaceApplication = () => {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [attendance, setAttendance] = useState<string[]>([]);
   const [selectOption, setSelectOption] = useState<string>('');
-
   const [selectedItem, setSelectedItem] = useState<string>('');
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isReadonly, setIsReadonly] = useState<boolean>(false);
 
   const btnClick = () => {

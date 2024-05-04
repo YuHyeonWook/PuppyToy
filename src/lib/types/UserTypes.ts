@@ -1,4 +1,4 @@
-export interface UserType {
+export type UserType = {
   name: string;
   age: number;
   breed: string;
@@ -9,7 +9,7 @@ export interface UserType {
   outWork: string;
   position: string;
   workDate: string;
-}
+};
 
 export interface UserContextType {}
 

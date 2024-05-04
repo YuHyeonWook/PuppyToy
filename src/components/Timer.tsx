@@ -6,10 +6,10 @@ import TimerModal from './TimerModal';
 import '@styles/Time.scss';
 
 const Timer = () => {
-  const [currentTime, setCurrentTime] = useState('-- : -- : --'); // 현재 시간
-  const [inWork, setInWork] = useState(false); // 등교 여부
-  const [outWork, setOutWork] = useState(false); // 하교 여부
-  const [modalOpen, setModalOpen] = useState(false);
+  const [currentTime, setCurrentTime] = useState<string>('-- : -- : --'); // 현재 시간
+  const [inWork, setInWork] = useState<boolean>(false); // 등교 여부
+  const [outWork, setOutWork] = useState<boolean>(false); // 하교 여부
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
 
   // 한국 기준 Date 객체 반환
   const getTimeInKorea = () => {
@@ -21,7 +21,7 @@ const Timer = () => {
   };
 
   // Date 객체에서 'HH : MM : SS' 추출해서 반환
-  const getTimeString = (date) => {
+  const getTimeString = (date: Date): string => {
     const hours = String(date.getHours()).padStart(2, '0');
     const minutes = String(date.getMinutes()).padStart(2, '0');
     const seconds = String(date.getSeconds()).padStart(2, '0');
@@ -47,9 +47,17 @@ const Timer = () => {
   useEffect(() => {
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
-      const userId = user.uid;
-      const userRef = doc(db, 'newUsers', userId);
-      const userSnap = await getDoc(userRef);
+      let userSnap;
+      let userRef;
+
+      if (user) {
+        const userId = user.uid;
+        userRef = doc(db, 'newUsers', userId);
+        userSnap = await getDoc(userRef);
+      } else {
+        console.log('유저 정보가 로그인 안됨');
+        return;
+      }
 
       if (userSnap.exists()) {
         const userData = userSnap.data();

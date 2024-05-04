@@ -3,7 +3,14 @@ import { format } from 'date-fns';
 import { getFirestore, collection, query, where, onSnapshot, Timestamp } from 'firebase/firestore';
 import '@styles/WorkspaceApplication.scss';
 
-const WorkspaceList = ({ attendance, onItemClick }) => {
+type WorkspaceListProps = {
+  attendance: string[];
+  onItemClick: (data) => void;
+};
+
+const WorkspaceList = ({ attendance, onItemClick }: WorkspaceListProps) => {
+  console.log('attendance', attendance);
+  console.log(onItemClick);
   const db = getFirestore();
   const [listData, setListData] = useState([]);
 
