@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo/HeaderLogo.png';
 import SingOut from './SingOut';
-import useUserState from '../lib/hooks/useUserState';
+import { useUserState } from '../lib/hooks/useUserState';
 import '@styles/Header.scss';
 
 const Header = () => {

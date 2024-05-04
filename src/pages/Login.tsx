@@ -5,7 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { FirebaseError } from 'firebase/app';
 import { toast } from 'react-toastify';
-import useUserState from '../lib/hooks/useUserState';
+import { useUserState } from '../lib/hooks/useUserState';
 import '@styles/Login.scss';
 
 export const Login = () => {

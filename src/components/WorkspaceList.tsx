@@ -10,7 +10,6 @@ type WorkspaceListProps = {
 
 const WorkspaceList = ({ attendance, onItemClick }: WorkspaceListProps) => {
   console.log('attendance', attendance);
-  console.log(onItemClick);
   const db = getFirestore();
   const [listData, setListData] = useState([]);
 

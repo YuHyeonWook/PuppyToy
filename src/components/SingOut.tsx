@@ -1,6 +1,6 @@
 import { getAuth, signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import useUserState from '../lib/hooks/useUserState';
+import { useUserState } from '../lib/hooks/useUserState';
 import '@styles/SingOut.scss';
 
 const SingOut = () => {

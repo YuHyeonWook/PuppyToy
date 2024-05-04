@@ -9,7 +9,7 @@ import { LuDog } from 'react-icons/lu';
 import Dropdown from '../components/common/Dropdown';
 import { getCurrentDate } from '../lib/utils/getCurrentDate';
 import 'react-toastify/dist/ReactToastify.css';
-import useUserState from '../lib/hooks/useUserState';
+import { useUserState } from '../lib/hooks/useUserState';
 import { FileType, UploadStatusType, UserType } from '../lib/types/UserTypes';
 import '@styles/UserAdd.scss';
 import '@styles/Loading.scss';
@@ -17,8 +17,7 @@ import '@styles/Loading.scss';
 const date = getCurrentDate();
 
 export const UserAdd = () => {
-  const [newUser, setNewUser] = useState<UserType>({
-    id: '',
+  const [newUser, setNewUser] = useState({
     name: '',
     gender: '',
     age: 0,
